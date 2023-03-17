@@ -83,34 +83,19 @@ TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TinyJSON.dir/Writer.cc.s"
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/TinyJSON/Writer.cc -o CMakeFiles/TinyJSON.dir/Writer.cc.s
 
-TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.o: TinyJSON/CMakeFiles/TinyJSON.dir/flags.make
-TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.o: ../TinyJSON/Value.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TinyJSON.dir/Value.cc.o -c /home/lin/TinyJSON/TinyJSON/Value.cc
-
-TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TinyJSON.dir/Value.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/TinyJSON/Value.cc > CMakeFiles/TinyJSON.dir/Value.cc.i
-
-TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TinyJSON.dir/Value.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/TinyJSON/Value.cc -o CMakeFiles/TinyJSON.dir/Value.cc.s
-
 # Object files for target TinyJSON
 TinyJSON_OBJECTS = \
 "CMakeFiles/TinyJSON.dir/Reader.cc.o" \
-"CMakeFiles/TinyJSON.dir/Writer.cc.o" \
-"CMakeFiles/TinyJSON.dir/Value.cc.o"
+"CMakeFiles/TinyJSON.dir/Writer.cc.o"
 
 # External object files for target TinyJSON
 TinyJSON_EXTERNAL_OBJECTS =
 
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o
-lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.o
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/build.make
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ../lib/libTinyJSON.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library ../lib/libTinyJSON.a"
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && $(CMAKE_COMMAND) -P CMakeFiles/TinyJSON.dir/cmake_clean_target.cmake
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TinyJSON.dir/link.txt --verbose=$(VERBOSE)
 

@@ -731,9 +731,6 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/StringWriteStream.h">
 			<Option target="TinyJSON"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/Value.cc">
-			<Option target="TinyJSON"/>
-		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Value.h">
 			<Option target="TinyJSON"/>
 		</Unit>

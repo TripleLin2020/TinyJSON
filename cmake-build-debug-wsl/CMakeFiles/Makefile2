@@ -173,12 +173,12 @@ example/clean: example/CMakeFiles/print_document.dir/clean
 TinyJSON/CMakeFiles/TinyJSON.dir/all:
 	$(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/depend
 	$(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=1,2,3,4 "Built target TinyJSON"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=1,2,3 "Built target TinyJSON"
 .PHONY : TinyJSON/CMakeFiles/TinyJSON.dir/all
 
 # Build rule for subdir invocation for target.
 TinyJSON/CMakeFiles/TinyJSON.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : TinyJSON/CMakeFiles/TinyJSON.dir/rule
@@ -200,12 +200,12 @@ TinyJSON/CMakeFiles/TinyJSON.dir/clean:
 example/CMakeFiles/parse.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/depend
 	$(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=14,15 "Built target parse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=13,14 "Built target parse"
 .PHONY : example/CMakeFiles/parse.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/parse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/parse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/parse.dir/rule
@@ -227,12 +227,12 @@ example/CMakeFiles/parse.dir/clean:
 example/CMakeFiles/struct.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/depend
 	$(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=20,21 "Built target struct"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=19,20 "Built target struct"
 .PHONY : example/CMakeFiles/struct.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/struct.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/struct.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/struct.dir/rule
@@ -254,12 +254,12 @@ example/CMakeFiles/struct.dir/clean:
 example/CMakeFiles/add_one.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/depend
 	$(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=5,6 "Built target add_one"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=4,5 "Built target add_one"
 .PHONY : example/CMakeFiles/add_one.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/add_one.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/add_one.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/add_one.dir/rule
@@ -281,12 +281,12 @@ example/CMakeFiles/add_one.dir/clean:
 example/CMakeFiles/pretty.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/depend
 	$(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=16,17 "Built target pretty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=15,16 "Built target pretty"
 .PHONY : example/CMakeFiles/pretty.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/pretty.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/pretty.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/pretty.dir/rule
@@ -308,12 +308,12 @@ example/CMakeFiles/pretty.dir/clean:
 example/CMakeFiles/write_document.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/depend
 	$(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=28,29 "Built target write_document"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=27,28 "Built target write_document"
 .PHONY : example/CMakeFiles/write_document.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/write_document.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/write_document.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/write_document.dir/rule
@@ -335,12 +335,12 @@ example/CMakeFiles/write_document.dir/clean:
 example/CMakeFiles/generate.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/depend
 	$(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=9,10 "Built target generate"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=8,9 "Built target generate"
 .PHONY : example/CMakeFiles/generate.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/generate.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/generate.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/generate.dir/rule
@@ -362,12 +362,12 @@ example/CMakeFiles/generate.dir/clean:
 example/CMakeFiles/print_document.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/depend
 	$(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=18,19 "Built target print_document"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=17,18 "Built target print_document"
 .PHONY : example/CMakeFiles/print_document.dir/all
 
 # Build rule for subdir invocation for target.
 example/CMakeFiles/print_document.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/print_document.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : example/CMakeFiles/print_document.dir/rule
@@ -390,12 +390,12 @@ TinyJSON/test/CMakeFiles/test_roundtrip.dir/all: TinyJSON/CMakeFiles/TinyJSON.di
 TinyJSON/test/CMakeFiles/test_roundtrip.dir/all: TinyJSON/test/CMakeFiles/gtest.dir/all
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_roundtrip.dir/build.make TinyJSON/test/CMakeFiles/test_roundtrip.dir/depend
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_roundtrip.dir/build.make TinyJSON/test/CMakeFiles/test_roundtrip.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=24,25 "Built target test_roundtrip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=23,24 "Built target test_roundtrip"
 .PHONY : TinyJSON/test/CMakeFiles/test_roundtrip.dir/all
 
 # Build rule for subdir invocation for target.
 TinyJSON/test/CMakeFiles/test_roundtrip.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 TinyJSON/test/CMakeFiles/test_roundtrip.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : TinyJSON/test/CMakeFiles/test_roundtrip.dir/rule
@@ -418,12 +418,12 @@ TinyJSON/test/CMakeFiles/test_value.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/al
 TinyJSON/test/CMakeFiles/test_value.dir/all: TinyJSON/test/CMakeFiles/gtest.dir/all
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_value.dir/build.make TinyJSON/test/CMakeFiles/test_value.dir/depend
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_value.dir/build.make TinyJSON/test/CMakeFiles/test_value.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=26,27 "Built target test_value"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=25,26 "Built target test_value"
 .PHONY : TinyJSON/test/CMakeFiles/test_value.dir/all
 
 # Build rule for subdir invocation for target.
 TinyJSON/test/CMakeFiles/test_value.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 TinyJSON/test/CMakeFiles/test_value.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : TinyJSON/test/CMakeFiles/test_value.dir/rule
@@ -446,12 +446,12 @@ TinyJSON/test/CMakeFiles/test_error.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/al
 TinyJSON/test/CMakeFiles/test_error.dir/all: TinyJSON/test/CMakeFiles/gtest.dir/all
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_error.dir/build.make TinyJSON/test/CMakeFiles/test_error.dir/depend
 	$(MAKE) -f TinyJSON/test/CMakeFiles/test_error.dir/build.make TinyJSON/test/CMakeFiles/test_error.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=22,23 "Built target test_error"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=21,22 "Built target test_error"
 .PHONY : TinyJSON/test/CMakeFiles/test_error.dir/all
 
 # Build rule for subdir invocation for target.
 TinyJSON/test/CMakeFiles/test_error.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 TinyJSON/test/CMakeFiles/test_error.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : TinyJSON/test/CMakeFiles/test_error.dir/rule
@@ -473,7 +473,7 @@ TinyJSON/test/CMakeFiles/test_error.dir/clean:
 TinyJSON/test/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f TinyJSON/test/CMakeFiles/gtest.dir/build.make TinyJSON/test/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f TinyJSON/test/CMakeFiles/gtest.dir/build.make TinyJSON/test/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=11,12,13 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=10,11,12 "Built target gtest"
 .PHONY : TinyJSON/test/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -500,12 +500,12 @@ TinyJSON/test/CMakeFiles/gtest.dir/clean:
 TinyJSON/bench/CMakeFiles/bench_parse.dir/all: TinyJSON/CMakeFiles/TinyJSON.dir/all
 	$(MAKE) -f TinyJSON/bench/CMakeFiles/bench_parse.dir/build.make TinyJSON/bench/CMakeFiles/bench_parse.dir/depend
 	$(MAKE) -f TinyJSON/bench/CMakeFiles/bench_parse.dir/build.make TinyJSON/bench/CMakeFiles/bench_parse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=7,8 "Built target bench_parse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=6,7 "Built target bench_parse"
 .PHONY : TinyJSON/bench/CMakeFiles/bench_parse.dir/all
 
 # Build rule for subdir invocation for target.
 TinyJSON/bench/CMakeFiles/bench_parse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 TinyJSON/bench/CMakeFiles/bench_parse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : TinyJSON/bench/CMakeFiles/bench_parse.dir/rule

@@ -1,9 +1,5 @@
-//
-// Created by frank on 17-12-24.
-//
-
-#ifndef TJSON_READER_H
-#define TJSON_READER_H
+#ifndef JSON_READER_H
+#define JSON_READER_H
 
 #include <TinyJSON/Exception.h>
 #include <TinyJSON/Value.h>
@@ -357,4 +353,4 @@ private:
 
 }  // namespace json
 
-#endif  // TJSON_READER_H
+#endif  // JSON_READER_H

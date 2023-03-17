@@ -209,33 +209,6 @@ Reader.cc.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.s
 .PHONY : Reader.cc.s
 
-Value.o: Value.cc.o
-
-.PHONY : Value.o
-
-# target to build an object file
-Value.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.o
-.PHONY : Value.cc.o
-
-Value.i: Value.cc.i
-
-.PHONY : Value.i
-
-# target to preprocess a source file
-Value.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.i
-.PHONY : Value.cc.i
-
-Value.s: Value.cc.s
-
-.PHONY : Value.s
-
-# target to generate assembly for a file
-Value.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Value.cc.s
-.PHONY : Value.cc.s
-
 Writer.o: Writer.cc.o
 
 .PHONY : Writer.o
@@ -280,9 +253,6 @@ help:
 	@echo "... Reader.o"
 	@echo "... Reader.i"
 	@echo "... Reader.s"
-	@echo "... Value.o"
-	@echo "... Value.i"
-	@echo "... Value.s"
 	@echo "... Writer.o"
 	@echo "... Writer.i"
 	@echo "... Writer.s"

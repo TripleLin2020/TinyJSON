@@ -4,7 +4,7 @@ add_library(TinyJSON STATIC
         StringReadStream.h StringWriteStream.h
         Reader.cc Reader.h
         Writer.cc Writer.h
-        Value.cc Value.h
+        Value.h
         Document.h
         noncopyable.h
         PrettyWriter.h)

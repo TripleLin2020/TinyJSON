@@ -2,7 +2,6 @@ file(REMOVE_RECURSE
   "../lib/libTinyJSON.a"
   "../lib/libTinyJSON.pdb"
   "CMakeFiles/TinyJSON.dir/Reader.cc.o"
-  "CMakeFiles/TinyJSON.dir/Value.cc.o"
   "CMakeFiles/TinyJSON.dir/Writer.cc.o"
 )
 
