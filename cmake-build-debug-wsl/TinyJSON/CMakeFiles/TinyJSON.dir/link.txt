@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libTinyJSON.a  CMakeFiles/TinyJSON.dir/Reader.cc.o CMakeFiles/TinyJSON.dir/Writer.cc.o CMakeFiles/TinyJSON.dir/Value.cc.o
+/usr/bin/ranlib ../lib/libTinyJSON.a
