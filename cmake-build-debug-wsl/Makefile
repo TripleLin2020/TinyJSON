@@ -271,6 +271,71 @@ print_document/fast:
 	$(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
 .PHONY : print_document/fast
 
+#=============================================================================
+# Target rules for targets named test_roundtrip
+
+# Build rule for target.
+test_roundtrip: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_roundtrip
+.PHONY : test_roundtrip
+
+# fast build rule for target.
+test_roundtrip/fast:
+	$(MAKE) -f TinyJSON/test/CMakeFiles/test_roundtrip.dir/build.make TinyJSON/test/CMakeFiles/test_roundtrip.dir/build
+.PHONY : test_roundtrip/fast
+
+#=============================================================================
+# Target rules for targets named test_value
+
+# Build rule for target.
+test_value: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_value
+.PHONY : test_value
+
+# fast build rule for target.
+test_value/fast:
+	$(MAKE) -f TinyJSON/test/CMakeFiles/test_value.dir/build.make TinyJSON/test/CMakeFiles/test_value.dir/build
+.PHONY : test_value/fast
+
+#=============================================================================
+# Target rules for targets named test_error
+
+# Build rule for target.
+test_error: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_error
+.PHONY : test_error
+
+# fast build rule for target.
+test_error/fast:
+	$(MAKE) -f TinyJSON/test/CMakeFiles/test_error.dir/build.make TinyJSON/test/CMakeFiles/test_error.dir/build
+.PHONY : test_error/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f TinyJSON/test/CMakeFiles/gtest.dir/build.make TinyJSON/test/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named bench_parse
+
+# Build rule for target.
+bench_parse: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bench_parse
+.PHONY : bench_parse
+
+# fast build rule for target.
+bench_parse/fast:
+	$(MAKE) -f TinyJSON/bench/CMakeFiles/bench_parse.dir/build.make TinyJSON/bench/CMakeFiles/bench_parse.dir/build
+.PHONY : bench_parse/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -292,6 +357,11 @@ help:
 	@echo "... write_document"
 	@echo "... generate"
 	@echo "... print_document"
+	@echo "... test_roundtrip"
+	@echo "... test_value"
+	@echo "... test_error"
+	@echo "... gtest"
+	@echo "... bench_parse"
 .PHONY : help
 
 

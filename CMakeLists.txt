@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.10)
 project(TinyJSON)
 
 enable_testing()
@@ -6,6 +6,8 @@ enable_testing()
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
+
+set(CMAKE_CXX_STANDARD 20)
 
 set(CXX_FLAGS
         -fno-omit-frame-pointer # linux perf
@@ -19,7 +21,7 @@ set(CXX_FLAGS
         -Wpointer-arith
         -Wshadow
         -Wwrite-strings
-        -std=c++17
+        -std=c++20
         -march=native
         -rdynamic)
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
@@ -31,13 +33,17 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(TinyJSON)
 
-if(NOT CMAKE_BUILD_NO_EXAMPLES)
-    add_subdirectory(example)
-endif()
-if (CMAKE_BUILD_TESTS)
-    add_subdirectory(TinyJSON/test)
-endif()
-if (CMAKE_BUILD_BENCHMARK)
-    add_subdirectory(TinyJSON/bench)
-endif()
+#if(NOT CMAKE_BUILD_NO_EXAMPLES)
+#    add_subdirectory(example)
+#endif()
+#if (CMAKE_BUILD_TESTS)
+#    add_subdirectory(TinyJSON/test)
+#endif()
+#if (CMAKE_BUILD_BENCHMARK)
+#    add_subdirectory(TinyJSON/bench)
+#endif()
+
+add_subdirectory(example)
+add_subdirectory(TinyJSON/test)
+add_subdirectory(TinyJSON/bench)
 

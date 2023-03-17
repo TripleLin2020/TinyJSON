@@ -1,7 +1,3 @@
-//
-// Created by frank on 17-12-27.
-//
-
 #include <TinyJSON/Document.h>
 #include <gtest/gtest.h>
 

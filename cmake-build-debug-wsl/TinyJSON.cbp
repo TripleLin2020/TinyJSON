@@ -5,7 +5,7 @@
 		<Option title="TinyJSON"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\TinyJSON\;CMake Files\example\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\TinyJSON\;CMake Files\TinyJSON\test\;CMake Files\TinyJSON\bench\;CMake Files\example\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl"/>
@@ -455,6 +455,254 @@
 					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/example/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="test_roundtrip">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_roundtrip" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_roundtrip"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_roundtrip/fast">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_roundtrip" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_roundtrip/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_value">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_value" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_value"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_value/fast">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_value" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_value/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_error">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_error" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_error"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_error/fast">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/test_error" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 test_error/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/lib/libgtest.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 gtest"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/lib/libgtest.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest"/>
+					<Add directory="/home/lin/TinyJSON/third_party/gtest/googletest/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 gtest/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bench_parse">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/bench_parse" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/benchmark/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 bench_parse"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bench_parse/fast">
+				<Option output="/home/lin/TinyJSON/cmake-build-debug-wsl/bin/bench_parse" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lin/TinyJSON/cmake-build-debug-wsl/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/third_party/benchmark/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 bench_parse/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Document.h">
 			<Option target="TinyJSON"/>
@@ -495,8 +743,20 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Writer.h">
 			<Option target="TinyJSON"/>
 		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/bench/bench_parse.cc">
+			<Option target="bench_parse"/>
+		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/noncopyable.h">
 			<Option target="TinyJSON"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/test/test_error.cc">
+			<Option target="test_error"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/test/test_roundtrip.cc">
+			<Option target="test_roundtrip"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/test/test_value.cc">
+			<Option target="test_value"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/example/add_one.cc">
 			<Option target="add_one"/>
@@ -522,11 +782,23 @@
 		<Unit filename="/home/lin/TinyJSON/example/write_document.cc">
 			<Option target="write_document"/>
 		</Unit>
+		<Unit filename="/home/lin/TinyJSON/third_party/gtest/googletest/src/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/third_party/gtest/googletest/src/gtest_main.cc">
+			<Option target="gtest"/>
+		</Unit>
 		<Unit filename="/home/lin/TinyJSON/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\TinyJSON\"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\TinyJSON\test\"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/bench/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\TinyJSON\bench\"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/example/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\example\"/>

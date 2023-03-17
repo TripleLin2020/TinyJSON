@@ -1,9 +1,5 @@
-//
-// Created by frank on 17-12-25.
-//
-
-#ifndef TJSON_VALUE_H
-#define TJSON_VALUE_H
+#ifndef JSON_VALUE_H
+#define JSON_VALUE_H
 
 #include <cassert>
 #include <cstring>
@@ -369,4 +365,4 @@ inline bool Value::writeTo(Handler& handler) const
 
 }
 
-#endif //TJSON_VALUE_H
+#endif //JSON_VALUE_H

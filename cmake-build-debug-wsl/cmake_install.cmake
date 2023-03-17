@@ -41,6 +41,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/cmake_install.cmake")
   include("/home/lin/TinyJSON/cmake-build-debug-wsl/example/cmake_install.cmake")
+  include("/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/cmake_install.cmake")
+  include("/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/bench/cmake_install.cmake")
 
 endif()
 
