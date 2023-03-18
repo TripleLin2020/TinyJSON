@@ -1,13 +1,11 @@
-//
-// Created by frank on 17-12-26.
-//
-
 #include <cstdio>
+#include <string_view>
 
 #include <TinyJSON/Writer.h>
 #include <TinyJSON/FileWriteStream.h>
 
 using namespace json;
+using namespace std::string_view_literals;
 
 int main()
 {

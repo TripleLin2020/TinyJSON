@@ -1,7 +1,3 @@
-//
-// Created by frank on 18-1-29.
-//
-
 #include <string>
 
 #include <TinyJSON/Value.h>

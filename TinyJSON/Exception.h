@@ -1,9 +1,5 @@
-//
-// Created by frank on 17-12-25.
-//
-
-#ifndef TJSON_EXCEPTION_H
-#define TJSON_EXCEPTION_H
+#ifndef JSON_EXCEPTION_H
+#define JSON_EXCEPTION_H
 
 #include <exception>
 #include <cassert>
@@ -63,4 +59,4 @@ private:
 
 }
 
-#endif //TJSON_EXCEPTION_H
+#endif //JSON_EXCEPTION_H
