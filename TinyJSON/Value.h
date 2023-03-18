@@ -16,6 +16,17 @@
 namespace json
 {
 
+
+class Value;
+
+typedef std::string String;
+typedef std::shared_ptr<String> StringPtr;
+typedef std::vector<Value> Array;
+typedef std::shared_ptr<Array> ArrayPtr;
+typedef std::pair<StringPtr, Value> Pair;
+typedef std::vector<Pair> Object;
+typedef std::shared_ptr<Object> ObjectPtr;
+
 enum ValueType : size_t
 {
     TYPE_NULL = 0,
@@ -33,15 +44,6 @@ class Document;
 class Value
 {
     friend class Document;
-
-public:
-    typedef std::pair<std::string, Value> Pair;
-    typedef std::vector<char> String;
-    typedef std::vector<Value> Array;
-    typedef std::vector<Pair> Object;
-    typedef std::shared_ptr<String> StringPtr;
-    typedef std::shared_ptr<Array> ArrayPtr;
-    typedef std::shared_ptr<Object> ObjectPtr;
 
 public:
     Value() : data(std::monostate()) {}
@@ -71,26 +73,27 @@ public:
 
     static Value emptyString() {
         Value v;
-        v.data = StringPtr();
+        v.data = std::make_shared<String>();
         return v;
     }
 
     static Value emptyArray() {
         Value v;
-        v.data = ArrayPtr();
+        v.data = std::make_shared<Array>();
         return v;
     }
 
     static Value emptyObject() {
         Value v;
-        v.data = ObjectPtr();
+        v.data = std::make_shared<Object>();
         return v;
     }
 
-    ValueType getType() const { return static_cast<ValueType>(data.index()); }
+    [[nodiscard]] ValueType getType() const { return static_cast<ValueType>(data.index()); }
 
     template<typename T>
-    requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>
+    requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double, StringPtr, ArrayPtr, ObjectPtr>>
+    // 获取类成员变量data保存的值，可以是bool, int32_t, int64_t, double基础类型，或StringPtr, ArrayPtr, ObjectPtr类型的智能指针
     [[nodiscard]] T getData() const {
         return std::get<T>(data);
     }
@@ -119,7 +122,7 @@ public:
 
     [[nodiscard]] Pair* findPair(const std::string& key) {
         for (Pair& p: *std::get<ObjectPtr>(data)) {
-            if (p.first == key) return &p;
+            if (*p.first == key) return &p;
         }
         return nullptr;
     }
@@ -133,7 +136,7 @@ public:
     };
 
     void addPair(Value&& key, Value&& value) {
-        std::get<ObjectPtr>(data)->emplace_back(key, value);
+        std::get<ObjectPtr>(data)->emplace_back(std::get<StringPtr>(key.data), value);
     };
 
     template<typename T>
@@ -154,8 +157,8 @@ public:
         return (*std::get<ArrayPtr>(data))[i];
     }
 
-//    template<typename Handler>
-//    bool writeTo(Handler& handler) const;
+    template<typename Handler>
+    bool writeTo(Handler& handler) const;
 
 private:
 
@@ -164,8 +167,38 @@ private:
 
 #define CALL(expr) do { if (!(expr)) return false; } while(false)
 
-//template<typename Handler>
-//inline bool Value::writeTo(Handler& handler) const {
+template<typename Handler>
+inline bool Value::writeTo(Handler& handler) const {
+    std::visit([&](auto& arg) {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, std::monostate>) {
+            CALL(handler.Null());
+        } else if constexpr(std::is_same_v<T, bool>) {
+            CALL(handler.Bool(data));
+        } else if constexpr(std::is_same_v<T, int32_t>) {
+            CALL(handler.Bool(data));
+        } else if constexpr(std::is_same_v<T, int64_t>) {
+            CALL(handler.Bool(data));
+        } else if constexpr(std::is_same_v<T, double>) {
+            CALL(handler.Bool(data));
+        } else if constexpr(std::is_same_v<T, StringPtr>) {
+            CALL(handler.String(*getData<StringPtr>()));
+        } else if constexpr(std::is_same_v<T, ArrayPtr>) {
+            CALL(handler.StartArray());
+            for (auto& val: *getData<ArrayPtr>()) {
+                CALL(val.writeTo(handler));
+            }
+            CALL(handler.EndArray());
+        } else if constexpr(std::is_same_v<T, ObjectPtr>) {
+            for (auto& pair: *getData<ObjectPtr>()) {
+                handler.Key(*pair.first);
+                CALL(pair.second.writeTo(handler));
+            }
+            CALL(handler.EndObject());
+        } else {
+            assert(false && "non-exhaustive visitor!");
+        }
+    }, data);
 //    switch (type_) {
 //        case TYPE_NULL:
 //            CALL(handler.Null());
@@ -203,8 +236,8 @@ private:
 //        default:
 //            assert(false && "bad type");
 //    }
-//    return true;
-//}
+    return true;
+}
 
 #undef CALL
 

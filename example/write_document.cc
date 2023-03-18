@@ -35,7 +35,7 @@ int main()
 
 
     Value& state = document["State"];
-    std::cout << "State: " << state.getStringView() << '\n';
+    std::cout << "State: " << state.getData<StringPtr>() << '\n';
 
     Value& zip = document["Zip"];
     std::cout << "Zip: " << zip.getStringView() << "\n";

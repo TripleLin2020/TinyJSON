@@ -1,9 +1,9 @@
 #ifndef JSON_DOCUMENT_H
 #define JSON_DOCUMENT_H
 
-#include <TinyJSON/Reader.h>
-#include <TinyJSON/StringReadStream.h>
-#include <TinyJSON/Value.h>
+#include "TinyJSON/Reader.h"
+#include "TinyJSON/StringReadStream.h"
+#include "TinyJSON/Value.h"
 
 #include <string>
 
@@ -111,7 +111,7 @@ private:
                 top.valueCount++;
                 return &key_;
             } else {
-                top.value->addPair(std::move(std::get<std::s), std::move(value));
+                top.value->addPair(std::move(key_), std::move(value));
                 top.valueCount++;
                 return top.lastValue();
             }
@@ -127,9 +127,9 @@ private:
 
         Value* lastValue() {
             if (type() == TYPE_ARRAY) {
-                return &value->a_->data.back();
+                return &std::get<ArrayPtr>(value->data)->back();
             } else {
-                return &value->o_->data.back().value;
+                return &std::get<ObjectPtr>(value->data)->back().second;
             }
         }
 

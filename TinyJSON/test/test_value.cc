@@ -1,7 +1,9 @@
 #include <TinyJSON/Document.h>
 #include <gtest/gtest.h>
+#include <string_view>
 
 using namespace json;
+using namespace std::string_view_literals;
 
 #define TEST_BOOL(type, value, json)      \
     do {                                  \
@@ -9,7 +11,7 @@ using namespace json;
         ParseError err = doc.parse(json); \
         EXPECT_EQ(err, PARSE_OK);         \
         EXPECT_EQ(doc.getType(), type);   \
-        EXPECT_EQ(doc.getBool(), value);  \
+        EXPECT_EQ(doc.getData<bool>(), value);  \
     } while (false)
 
 #define TEST_NULL(json)                      \
@@ -27,9 +29,9 @@ using namespace json;
         EXPECT_EQ(err, PARSE_OK);                     \
         EXPECT_EQ(doc.getType(), TYPE_DOUBLE);        \
         if (std::isnan(num)) {                        \
-            EXPECT_TRUE(std::isnan(doc.getDouble())); \
+            EXPECT_TRUE(std::isnan(doc.getData<double>())); \
         } else {                                      \
-            EXPECT_EQ(doc.getDouble(), num);          \
+            EXPECT_EQ(doc.getData<double>(), num);          \
         }                                             \
     } while (false)
 
@@ -39,7 +41,7 @@ using namespace json;
         ParseError err = doc.parse(json);     \
         EXPECT_EQ(err, PARSE_OK);             \
         EXPECT_EQ(doc.getType(), TYPE_INT32); \
-        EXPECT_EQ(doc.getInt32(), num);       \
+        EXPECT_EQ(doc.getData<int32_t>(), num);       \
     } while (false)
 
 #define TEST_INT64(num, json)                 \
@@ -48,7 +50,7 @@ using namespace json;
         ParseError err = doc.parse(json);     \
         EXPECT_EQ(err, PARSE_OK);             \
         EXPECT_EQ(doc.getType(), TYPE_INT64); \
-        EXPECT_EQ(doc.getInt64(), num);       \
+        EXPECT_EQ(doc.getData<int64_t>(), num);       \
     } while (false)
 
 #define TEST_STRING(str, json)                 \
@@ -57,7 +59,7 @@ using namespace json;
         ParseError err = doc.parse(json);      \
         EXPECT_EQ(err, PARSE_OK);              \
         EXPECT_EQ(doc.getType(), TYPE_STRING); \
-        EXPECT_EQ(doc.getString(), str);       \
+        EXPECT_EQ(*doc.getData<StringPtr>(), str);       \
     } while (false)
 
 TEST(json_value, null) {
@@ -124,19 +126,19 @@ TEST(json_value, number) {
 }
 
 TEST(json_value, string_) {
-    TEST_STRING(""sv, "\"\"");
-    TEST_STRING("abcd"sv, "\"abcd\"");
-    TEST_STRING("\\"sv, "\"\\\\\"");
-    TEST_STRING("\""sv, "\"\\\"\"");
-    TEST_STRING("/\b\f\n\r\t"sv, "\"\\/\\b\\f\\n\\r\\t\"");
+    TEST_STRING("", "\"\"");
+    TEST_STRING("abcd", "\"abcd\"");
+    TEST_STRING("\\", "\"\\\\\"");
+    TEST_STRING("\"", "\"\\\"\"");
+    TEST_STRING("/\b\f\n\r\t", "\"\\/\\b\\f\\n\\r\\t\"");
     TEST_STRING("蛤\0蛤\0蛤"sv, "\"蛤\\u0000蛤\\u0000蛤\"");
     TEST_STRING("蛤\0蛤\0蛤"sv, "\"蛤\0蛤\0蛤\""sv);
     TEST_STRING("\0"sv, "\"\\u0000\"");
-    TEST_STRING("\x24"sv, "\"\\u0024\"");                    /* Dollar $ */
-    TEST_STRING("\xC2\xA2"sv, "\"\\u00A2\"");                /* Cents ¢ */
-    TEST_STRING("\xE2\x82\xAC"sv, "\"\\u20AC\"");            /* Euro € */
-    TEST_STRING("\xF0\x9D\x84\x9E"sv, "\"\\uD834\\uDD1E\""); /* G clef  𝄞 */
-    TEST_STRING("\xF0\x9D\x84\x9E"sv, "\"\\ud834\\udd1e\""); /* G clef  𝄞 */
+    TEST_STRING("\x24", "\"\\u0024\"");                    /* Dollar $ */
+    TEST_STRING("\xC2\xA2", "\"\\u00A2\"");                /* Cents ¢ */
+    TEST_STRING("\xE2\x82\xAC", "\"\\u20AC\"");            /* Euro € */
+    TEST_STRING("\xF0\x9D\x84\x9E", "\"\\uD834\\uDD1E\""); /* G clef  𝄞 */
+    TEST_STRING("\xF0\x9D\x84\x9E", "\"\\ud834\\udd1e\""); /* G clef  𝄞 */
 }
 
 TEST(json_value, array) {
@@ -146,7 +148,7 @@ TEST(json_value, array) {
         err = doc.parse("[]");
         EXPECT_EQ(err, PARSE_OK);
         EXPECT_EQ(doc.getType(), TYPE_ARRAY);
-        EXPECT_TRUE(doc.getArray().empty());
+        EXPECT_TRUE(doc.getData<ArrayPtr>()->empty());
     }
     {
         Document doc;
@@ -154,10 +156,10 @@ TEST(json_value, array) {
         EXPECT_EQ(err, PARSE_OK);
         EXPECT_EQ(doc.getType(), TYPE_ARRAY);
 
-        auto& array = doc.getArray();
-        EXPECT_EQ(array.size(), 1);
-        EXPECT_EQ(array[0].getType(), TYPE_ARRAY);
-        EXPECT_TRUE(array[0].getArray().empty());
+        auto arrPtr = doc.getData<ArrayPtr>();
+        EXPECT_EQ(arrPtr->size(), 1);
+        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_ARRAY);
+        EXPECT_TRUE((*arrPtr)[0].getData<ArrayPtr>()->empty());
     }
     {
         Document doc;
@@ -165,12 +167,12 @@ TEST(json_value, array) {
         EXPECT_EQ(err, PARSE_OK);
         EXPECT_EQ(doc.getType(), TYPE_ARRAY);
 
-        auto& array = doc.getArray();
+        auto arrPtr = doc.getData<ArrayPtr>();
 
-        EXPECT_EQ(5, array.size());
-        for (size_t i = 0; i < array.size(); i++) {
-            EXPECT_EQ(array[i].getType(), TYPE_INT32);
-            EXPECT_EQ(array[i].getInt32(), i);
+        EXPECT_EQ(5, arrPtr->size());
+        for (size_t i = 0; i < arrPtr->size(); i++) {
+            EXPECT_EQ((*arrPtr)[i].getType(), TYPE_INT32);
+            EXPECT_EQ((*arrPtr)[i].getData<int32_t>(), i);
         }
     }
     {
@@ -179,12 +181,12 @@ TEST(json_value, array) {
         EXPECT_EQ(err, PARSE_OK);
         EXPECT_EQ(doc.getType(), TYPE_ARRAY);
 
-        auto& array = doc.getArray();
+        auto arrPtr = doc.getData<ArrayPtr>();
 
-        EXPECT_EQ(5, array.size());
-        for (size_t i = 0; i < array.size(); i++) {
-            EXPECT_EQ(array[i].getType(), TYPE_OBJECT);
-            EXPECT_EQ(array[i].getObject().size(), 0);
+        EXPECT_EQ(5, arrPtr->size());
+        for (size_t i = 0; i < arrPtr->size(); i++) {
+            EXPECT_EQ((*arrPtr)[i].getType(), TYPE_OBJECT);
+            EXPECT_EQ((*arrPtr)[i].getData<ObjectPtr>()->size(), 0);
         }
     }
     {
@@ -193,16 +195,16 @@ TEST(json_value, array) {
         EXPECT_EQ(err, PARSE_OK);
         EXPECT_EQ(doc.getType(), TYPE_ARRAY);
 
-        auto& array = doc.getArray();
-        EXPECT_EQ(5, array.size());
-        EXPECT_EQ(array[0].getType(), TYPE_STRING);
-        EXPECT_EQ(array[1].getType(), TYPE_BOOL);
-        EXPECT_EQ(array[2].getType(), TYPE_BOOL);
-        EXPECT_EQ(array[3].getType(), TYPE_NULL);
-        EXPECT_EQ(array[4].getType(), TYPE_DOUBLE);
+        auto arrPtr = doc.getData<ArrayPtr>();
+        EXPECT_EQ(5, arrPtr->size());
+        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_STRING);
+        EXPECT_EQ((*arrPtr)[1].getType(), TYPE_BOOL);
+        EXPECT_EQ((*arrPtr)[2].getType(), TYPE_BOOL);
+        EXPECT_EQ((*arrPtr)[3].getType(), TYPE_NULL);
+        EXPECT_EQ((*arrPtr)[4].getType(), TYPE_DOUBLE);
 
-        EXPECT_TRUE(array[0].getStringView() == "hehe");
-        EXPECT_EQ(array[4].getDouble(), 0.0);
+        EXPECT_TRUE(*(*arrPtr)[0].getData<StringPtr>() == "hehe");
+        EXPECT_EQ((*arrPtr)[4].getData<double>(), 0.0);
     }
 }
 
@@ -222,7 +224,7 @@ TEST(json_value, object) {
     EXPECT_EQ(err, PARSE_OK);
     EXPECT_EQ(doc.getType(), TYPE_OBJECT);
 
-    EXPECT_EQ(doc.getObject().size(), 7);
+    EXPECT_EQ(doc.getData<ObjectPtr>()->size(), 7);
     EXPECT_EQ(doc["n"].getType(), TYPE_NULL);
     EXPECT_EQ(doc["f"].getType(), TYPE_BOOL);
     EXPECT_EQ(doc["t"].getType(), TYPE_BOOL);
@@ -231,21 +233,20 @@ TEST(json_value, object) {
     EXPECT_EQ(doc["a"].getType(), TYPE_ARRAY);
     EXPECT_EQ(doc["o"].getType(), TYPE_OBJECT);
 
-    EXPECT_EQ(doc["i"].getInt32(), 123);
-    EXPECT_EQ(doc["s"].getStringView(), "abc");
+    EXPECT_EQ(doc["i"].getData<int32_t>(), 123);
+    EXPECT_EQ(*doc["s"].getData<StringPtr>(), "abc");
 
-    auto& array = doc["a"].getArray();
-    EXPECT_EQ(array.size(), 3);
+    auto arrPtr = doc["a"].getData<ArrayPtr>();
+    EXPECT_EQ(arrPtr->size(), 3);
     for (size_t i = 0; i < 3; i++) {
-        EXPECT_EQ(array[i].getType(), TYPE_INT32);
-        EXPECT_EQ(array[i].getInt32(), i + 1);
+        EXPECT_EQ((*arrPtr)[i].getType(), TYPE_INT32);
+        EXPECT_EQ((*arrPtr)[i].getData<int32_t>(), i + 1);
     }
 
     auto& obj = doc["o"];
-    EXPECT_EQ(obj.getSize(), 3);
-    EXPECT_EQ(obj["1"].getInt32(), 1);
-    EXPECT_EQ(obj["2"].getInt32(), 2);
-    EXPECT_EQ(obj["3"].getInt32(), 3);
+    EXPECT_EQ(obj["1"].getData<int32_t>(), 1);
+    EXPECT_EQ(obj["2"].getData<int32_t>(), 2);
+    EXPECT_EQ(obj["3"].getData<int32_t>(), 3);
 }
 
 int main(int argc, char** argv) {
