@@ -1,3 +1,5 @@
+include_directories(${PROJECT_SOURCE_DIR}/TinyJSON)
+
 add_executable(parse parse.cc)
 target_link_libraries(parse TinyJSON)
 

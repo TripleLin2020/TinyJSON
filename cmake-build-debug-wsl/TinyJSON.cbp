@@ -141,6 +141,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -164,6 +165,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -187,6 +189,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -210,6 +213,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -233,6 +237,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -256,6 +261,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -279,6 +285,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -302,6 +309,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -325,6 +333,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -348,6 +357,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -371,6 +381,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -394,6 +405,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -417,6 +429,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -440,6 +453,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/lin/TinyJSON"/>
+					<Add directory="/home/lin/TinyJSON/TinyJSON"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>

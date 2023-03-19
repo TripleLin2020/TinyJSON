@@ -6,5 +6,5 @@ CXX_FLAGS = -fno-omit-frame-pointer -Wall -Wextra -Werror -Wconversion -Wno-unus
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lin/TinyJSON 
+CXX_INCLUDES = -I/home/lin/TinyJSON -I/home/lin/TinyJSON/TinyJSON 
 

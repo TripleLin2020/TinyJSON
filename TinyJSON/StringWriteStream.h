@@ -1,7 +1,3 @@
-//
-// Created by frank on 17-12-26.
-//
-
 #ifndef TJSON_STRINGWRITESTREAM_H
 #define TJSON_STRINGWRITESTREAM_H
 

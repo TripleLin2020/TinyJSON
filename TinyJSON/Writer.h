@@ -1,11 +1,7 @@
-//
-// Created by frank on 17-12-26.
-//
+#ifndef JSON_WRITER_H
+#define JSON_WRITER_H
 
-#ifndef TJSON_WRITER_H
-#define TJSON_WRITER_H
-
-#include <TinyJSON/Value.h>
+#include "TinyJSON/Value.h"
 
 #include <cassert>
 #include <cmath>
@@ -13,21 +9,26 @@
 #include <string>
 #include <vector>
 
-namespace json {
+namespace json
+{
 
-namespace detail {
+namespace detail
+{
 
 //
 // fast int to string conversion
 // buffer is NOT null terminated!!!
 //
 unsigned itoa(int32_t val, char* buf);
+
 unsigned itoa(int64_t val, char* buf);
 
 }  // namespace detail
 
-template <typename WriteStream>
-class Writer : noncopyable {
+
+template<typename WriteStream> requires requires(WriteStream os) { os.put(""); }
+class Writer : noncopyable
+{
 public:
     explicit Writer(WriteStream& os) : os_(os), seeValue_(false) {}
 
@@ -36,11 +37,13 @@ public:
         os_.put("null");
         return true;
     }
+
     bool Bool(bool b) {
         prefix(TYPE_BOOL);
         os_.put(b ? "true" : "false");
         return true;
     }
+
     bool Int32(int32_t i32) {
         prefix(TYPE_INT32);
 
@@ -49,6 +52,7 @@ public:
         os_.put(std::string_view(buf, cnt));
         return true;
     }
+
     bool Int64(int64_t i64) {
         prefix(TYPE_INT64);
 
@@ -57,6 +61,7 @@ public:
         os_.put(std::string_view(buf, cnt));
         return true;
     }
+
     bool Double(double d) {
         prefix(TYPE_DOUBLE);
 
@@ -82,10 +87,11 @@ public:
         os_.put(buf);
         return true;
     }
+
     bool String(std::string_view s) {
         prefix(TYPE_STRING);
         os_.put('"');
-        for (auto c : s) {
+        for (auto c: s) {
             auto u = static_cast<unsigned>(c);
             switch (u) {
                 case '\"':
@@ -123,12 +129,14 @@ public:
         os_.put('"');
         return true;
     }
+
     bool StartObject() {
         prefix(TYPE_OBJECT);
         stack_.emplace_back(false);
         os_.put('{');
         return true;
     }
+
     bool Key(std::string_view s) {
         prefix(TYPE_STRING);
         os_.put('"');
@@ -136,6 +144,7 @@ public:
         os_.put('"');
         return true;
     }
+
     bool EndObject() {
         assert(!stack_.empty());
         assert(!stack_.back().inArray);
@@ -143,12 +152,14 @@ public:
         os_.put('}');
         return true;
     }
+
     bool StartArray() {
         prefix(TYPE_ARRAY);
         stack_.emplace_back(true);
         os_.put('[');
         return true;
     }
+
     bool EndArray() {
         assert(!stack_.empty());
         assert(stack_.back().inArray);
@@ -181,8 +192,10 @@ private:
     }
 
 private:
-    struct Level {
+    struct Level
+    {
         explicit Level(bool inArray_) : inArray(inArray_), valueCount(0) {}
+
         bool inArray;  // in array or object
         int valueCount;
     };
@@ -195,4 +208,4 @@ private:
 
 }  // namespace json
 
-#endif  // TJSON_HANDLER_H
+#endif  //JSON_WRITER_H

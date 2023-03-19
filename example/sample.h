@@ -1,9 +1,5 @@
-//
-// Created by frank on 17-12-27.
-//
-
-#ifndef TJSON_JSON_H
-#define TJSON_JSON_H
+#ifndef JSON_SAMPLE_H
+#define JSON_SAMPLE_H
 
 #include <string_view>
 
@@ -121,4 +117,4 @@ std::string_view sample[] = {
                 "    \"taglib-location\": \"/WEB-INF/tlds/cofax.tld\"}}}"
 };
 
-#endif //TJSON_JSON_H
+#endif //JSON_SAMPLE_H

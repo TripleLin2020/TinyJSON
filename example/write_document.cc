@@ -1,12 +1,10 @@
-//
-// Created by frank on 17-12-28.
-//
+#include "TinyJSON/Document.h"
+#include "TinyJSON/Writer.h"
+#include "TinyJSON/FileWriteStream.h"
 
 #include <iostream>
 
-#include <TinyJSON/Document.h>
-#include <TinyJSON/Writer.h>
-#include <TinyJSON/FileWriteStream.h>
+
 
 using namespace json;
 

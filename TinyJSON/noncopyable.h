@@ -1,9 +1,5 @@
-//
-// Created by frank on 17-12-26.
-//
-
-#ifndef TJSON_NONCOPYABLE_H
-#define TJSON_NONCOPYABLE_H
+#ifndef JSON_NONCOPYABLE_H
+#define JSON_NONCOPYABLE_H
 
 namespace json
 {
@@ -20,4 +16,4 @@ protected:
 
 }
 
-#endif //TJSON_NONCOPYABLE_H
+#endif //JSON_NONCOPYABLE_H

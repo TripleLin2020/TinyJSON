@@ -1,41 +1,31 @@
-//
-// Created by frank on 17-12-26.
-//
+#ifndef JSON_FILE_WRITE_STREAM_H
+#define JSON_FILE_WRITE_STREAM_H
 
-#ifndef TJSON_FILEWRITESTREAM_H
-#define TJSON_FILEWRITESTREAM_H
+#include "TinyJSON/noncopyable.h"
 
 #include <string>
 #include <cstdio>
 
-#include <TinyJSON/noncopyable.h>
-
 namespace json
 {
 
-class FileWriteStream: noncopyable
+class FileWriteStream : noncopyable
 {
 public:
-    explicit FileWriteStream(FILE* output):
-            output_(output) {}
+    explicit FileWriteStream(FILE* _output) : output(_output) {}
 
-    void put(char c)
-    {
-        putc(c, output_);
-    }
-    void put(const char* str)
-    {
-        fputs(str, output_);
-    }
-    void put(std::string_view str)
-    {
-        fprintf(output_, "%.*s", static_cast<int>(str.length()), str.data());
+    void put(char c) { putc(c, output); }
+
+    void put(const char* str) { fputs(str, output); }
+
+    void put(const std::string_view& str) {
+        fprintf(output, "%.*s", static_cast<int>(str.length()), str.data());
     }
 
 private:
-    FILE* output_;
+    FILE* output;
 };
 
 }
 
-#endif //TJSON_FILEWRITESTREAM_H
+#endif //JSON_FILE_WRITE_STREAM_H

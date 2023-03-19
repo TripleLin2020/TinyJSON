@@ -1,10 +1,8 @@
-//
-// Created by frank on 17-12-28.
-//
+#include "TinyJSON/Writer.h"
 
 #include <type_traits>
 
-#include <TinyJSON/Writer.h>
+
 
 using namespace json;
 

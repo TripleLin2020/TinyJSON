@@ -1,65 +1,46 @@
-//
-// Created by frank on 17-12-25.
-//
+#ifndef JSON_STRING_READ_STREAM_H
+#define JSON_STRING_READ_STREAM_H
 
-#ifndef TJSON_STRINGREADSTREAM_H
-#define TJSON_STRINGREADSTREAM_H
+#include "TinyJSON/noncopyable.h"
 
 #include <string>
 #include <cassert>
 
-#include <TinyJSON/noncopyable.h>
-
 namespace json
 {
-
-
-class StringReadStream: noncopyable
+class StringReadStream : noncopyable
 {
 public:
     using Iterator = std::string_view::iterator;
 
 public:
-    explicit
-    StringReadStream(std::string_view json)
-            : json_(json),
-              iter_(json_.begin())
-    {}
+    explicit StringReadStream(std::string_view& _json) : json(_json), iter(_json.begin()) {}
 
-    bool hasNext() const
-    { return iter_ != json_.end(); }
+    [[nodiscard]] bool hasNext() const { return iter != json.end(); }
 
-    char peek()
-    {
-        return hasNext() ? *iter_ : '\0';
-    }
+    char peek() { return hasNext() ? *iter : '\0'; }
 
-    Iterator getIter() const
-    {
-        return iter_;
-    }
+    [[nodiscard]] Iterator getIter() const { return iter; }
 
-    char next()
-    {
+    char next() {
         if (hasNext()) {
-            char ch = *iter_;
-            iter_++;
+            char ch = *iter;
+            iter++;
             return ch;
         }
         return '\0';
     };
 
-    void assertNext(char ch)
-    {
+    void assertNext(char ch) {
         assert(peek() == ch);
         next();
     }
 
 private:
-    std::string_view  json_;
-    Iterator          iter_;
+    std::string_view json;
+    Iterator iter;
 };
 
 
 }
-#endif //TJSON_STRINGREADSTREAM_H
+#endif //JSON_STRING_READ_STREAM_H
