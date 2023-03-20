@@ -15,6 +15,7 @@ template<typename BUFFER_TYPE> requires std::ranges::contiguous_range<BUFFER_TYP
 class ReadStream : noncopyable
 {
 public:
+    using Buffer_Type = BUFFER_TYPE;
     using Iterator = BUFFER_TYPE::iterator;
 
 public:

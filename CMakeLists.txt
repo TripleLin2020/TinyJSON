@@ -47,3 +47,4 @@ add_subdirectory(example)
 add_subdirectory(TinyJSON/test)
 add_subdirectory(TinyJSON/bench)
 
+set_target_properties(TinyJSON PROPERTIES LINKER_LANGUAGE CXX)

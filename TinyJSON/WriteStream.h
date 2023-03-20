@@ -18,8 +18,6 @@ public:
 
     virtual void put(char c) = 0;
 
-    virtual void put(const char* str) = 0;
-
     virtual void put(const std::string_view&) = 0;
 };
 
@@ -28,13 +26,14 @@ class StringWriteStream : public WriteStream
 public:
     void put(char c) override { buffer.push_back(c); }
 
-    void put(const char* str) override {
-        buffer.insert(buffer.end(), str, str + std::strlen(str));
-    }
-
     void put(const std::string_view& str) override {
         buffer.insert(buffer.end(), str.begin(), str.end());
     }
+
+    void put(const char* str, size_t len) {
+        buffer.insert(buffer.end(), str, str + len);
+    }
+
 
     [[nodiscard]] std::string_view get() const {
         return std::string_view(&*buffer.begin(), buffer.size());
@@ -52,11 +51,11 @@ public:
 
     void put(char c) override { putc(c, output); }
 
-    void put(const char* str) override { fputs(str, output); }
-
     void put(const std::string_view& str) override {
         fprintf(output, "%.*s", static_cast<int>(str.length()), str.data());
     }
+
+    void put(const char* str) { fputs(str, output); }
 
 private:
     FILE* output;

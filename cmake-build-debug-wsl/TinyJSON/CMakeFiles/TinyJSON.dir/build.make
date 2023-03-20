@@ -57,30 +57,15 @@ include TinyJSON/CMakeFiles/TinyJSON.dir/progress.make
 # Include the compile flags for this target's objects.
 include TinyJSON/CMakeFiles/TinyJSON.dir/flags.make
 
-TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o: TinyJSON/CMakeFiles/TinyJSON.dir/flags.make
-TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o: ../TinyJSON/Reader.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TinyJSON.dir/Reader.cc.o -c /home/lin/TinyJSON/TinyJSON/Reader.cc
-
-TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TinyJSON.dir/Reader.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/TinyJSON/Reader.cc > CMakeFiles/TinyJSON.dir/Reader.cc.i
-
-TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TinyJSON.dir/Reader.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/TinyJSON/Reader.cc -o CMakeFiles/TinyJSON.dir/Reader.cc.s
-
 # Object files for target TinyJSON
-TinyJSON_OBJECTS = \
-"CMakeFiles/TinyJSON.dir/Reader.cc.o"
+TinyJSON_OBJECTS =
 
 # External object files for target TinyJSON
 TinyJSON_EXTERNAL_OBJECTS =
 
-lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/build.make
 lib/libTinyJSON.a: TinyJSON/CMakeFiles/TinyJSON.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../lib/libTinyJSON.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX static library ../lib/libTinyJSON.a"
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && $(CMAKE_COMMAND) -P CMakeFiles/TinyJSON.dir/cmake_clean_target.cmake
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TinyJSON.dir/link.txt --verbose=$(VERBOSE)
 

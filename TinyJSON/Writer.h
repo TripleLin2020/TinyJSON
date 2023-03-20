@@ -1,7 +1,7 @@
 #ifndef JSON_WRITER_H
 #define JSON_WRITER_H
 
-#include "TinyJSON/Value.h"
+#include "Value.h"
 
 #include <cassert>
 #include <cmath>

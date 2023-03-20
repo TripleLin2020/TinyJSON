@@ -1,6 +1,6 @@
 add_library(TinyJSON STATIC
         Exception.h
-        Reader.cc Reader.h
+        Reader.h
         Writer.h
         Value.h
         Document.h

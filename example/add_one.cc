@@ -1,9 +1,9 @@
 #include "sample.h"
 
+#include "Writer.h"
+#include "Reader.h"
 #include "ReadStream.h"
 #include "WriteStream.h"
-#include "TinyJSON/Writer.h"
-#include "TinyJSON/Reader.h"
 
 using namespace json;
 

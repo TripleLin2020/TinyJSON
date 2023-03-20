@@ -1,8 +1,9 @@
 #ifndef JSON_READER_H
 #define JSON_READER_H
 
-#include "TinyJSON/Exception.h"
-#include "TinyJSON/Value.h"
+#include "Exception.h"
+#include "Value.h"
+#include "ReadStream.h"
 
 #include <cassert>
 #include <cmath>
@@ -10,6 +11,7 @@
 #include <string>
 #include <variant>
 #include <vector>
+#include <charconv>
 
 namespace json
 {
@@ -17,8 +19,9 @@ namespace json
 class Reader : noncopyable
 {
 public:
-    template<typename ReadStream, typename Handler>
-    static ParseError parse(ReadStream& is, Handler& handler) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static ParseError parse(RS& is, Handler& handler) {
         try {
             parseWhitespace(is);
             parseValue(is, handler);
@@ -42,13 +45,13 @@ private:
             u <<= 4;
             switch (char ch = is.next()) {
                 case '0' ... '9':
-                    u |= ch - '0';
+                    u |= static_cast<unsigned>(ch - '0');
                     break;
                 case 'a' ... 'f':
-                    u |= ch - 'a' + 10;
+                    u |= static_cast<unsigned>(ch - 'a' + 10);
                     break;
                 case 'A' ... 'F':
-                    u |= ch - 'A' + 10;
+                    u |= static_cast<unsigned>(ch - 'A' + 10);
                     break;
                 default:
                     throw Exception(PARSE_BAD_UNICODE_HEX);
@@ -57,8 +60,9 @@ private:
         return u;
     }
 
-    template<typename ReadStream>
-    static void parseWhitespace(ReadStream& is) {
+    template<typename T>
+    requires std::is_base_of_v<ReadStream<typename T::Buffer_Type>, T>
+    static void parseWhitespace(T& is) {
         while (is.hasNext()) {
             char ch = is.peek();
             if (ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n') {
@@ -69,8 +73,9 @@ private:
         }
     }
 
-    template<typename ReadStream, typename Handler>
-    static void parseLiteral(ReadStream& is, Handler& handler, const char* literal, ValueType type) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseLiteral(RS& is, Handler& handler, const char* literal, ValueType type) {
         char c = *literal;
 
         is.assertNext(*literal++);
@@ -82,23 +87,24 @@ private:
             switch (type) {
                 case TYPE_NULL:
                     CALL(handler.Null());
-                    return;
+                    break;
                 case TYPE_BOOL:
                     CALL(handler.Bool(c == 't'));
-                    return;
+                    break;
                 case TYPE_DOUBLE:
                     CALL(handler.Double(c == 'N' ? NAN : INFINITY));
-                    return;
+                    break;
                 default:
                     assert(false && "bad type");
+                    throw Exception(PARSE_BAD_VALUE);
             }
         }
-        throw Exception(PARSE_BAD_VALUE);
     }
 
-    template<typename ReadStream, typename Handler>
-    static void parseNumber(ReadStream& is, Handler& handler) {
-        // parse 'NaN' (Not a Number) && 'Infinity'
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseNumber(RS& is, Handler& handler) {
+        // parse 'NaN' (Not a Number) and 'Infinity'
         if (is.peek() == 'N') {
             parseLiteral(is, handler, "NaN", TYPE_DOUBLE);
             return;
@@ -117,10 +123,11 @@ private:
         } else if (isDigit19(is.peek())) {
             is.next();
             while (isDigit(is.peek())) is.next();
-        } else
+        } else {
             throw Exception(PARSE_BAD_VALUE);
+        }
 
-        auto expectType = TYPE_NULL;
+        ValueType expectType = TYPE_NULL;
 
         if (is.peek() == '.') {
             expectType = TYPE_DOUBLE;
@@ -138,7 +145,7 @@ private:
             while (isDigit(is.peek())) is.next();
         }
 
-        // int64 or int32 ?
+        // Whether i32 or i64 is specified
         if (is.peek() == 'i') {
             is.next();
             if (expectType == TYPE_DOUBLE) throw Exception(PARSE_BAD_VALUE);
@@ -159,38 +166,37 @@ private:
         auto end = is.getIter();
         if (start == end) throw Exception(PARSE_BAD_VALUE);
 
-        try {
-            //
-            // std::stod() && std::stoi() are bad ideas,
-            // because new string buffer is needed
-            //
-            std::size_t idx;
-            if (expectType == TYPE_DOUBLE) {
-                double d = __gnu_cxx::__stoa(&std::strtod, "stod", &*start, &idx);
-                assert(start + idx == end);
-                CALL(handler.Double(d));
-            } else {
-                int64_t i64 = __gnu_cxx::__stoa(&std::strtol, "stol", &*start, &idx, 10);
-                if (expectType == TYPE_INT64) {
-                    CALL(handler.Int64(i64));
-                } else if (expectType == TYPE_INT32) {
-                    if (i64 > std::numeric_limits<int32_t>::max() || i64 < std::numeric_limits<int32_t>::min()) {
-                        throw std::out_of_range("int32_t overflow");
-                    }
-                    CALL(handler.Int32(static_cast<int32_t>(i64)));
-                } else if (i64 <= std::numeric_limits<int32_t>::max() && i64 >= std::numeric_limits<int32_t>::min()) {
-                    CALL(handler.Int32(static_cast<int32_t>(i64)));
-                } else {
-                    CALL(handler.Int64(i64));
-                }
+        if (expectType == TYPE_DOUBLE) {
+            double d;
+            if (auto res = std::from_chars(start, end, d); res.ec != std::errc()) {
+                assert("Fail to convert string to double");
+                throw Exception(PARSE_BAD_VALUE);
             }
-        } catch (std::out_of_range& e) {
-            throw Exception(PARSE_NUMBER_TOO_BIG);
+            CALL(handler.Double(d));
+        } else {
+            int64_t i64;
+            if (auto res = std::from_chars(start, end, i64); res.ec != std::errc()) {
+                assert("Fail to convert string to int64");
+                throw Exception(PARSE_BAD_VALUE);
+            }
+            if (expectType == TYPE_INT64) {
+                CALL(handler.Int64(i64));
+            } else if (expectType == TYPE_INT32) {
+                if (i64 > std::numeric_limits<int32_t>::max() || i64 < std::numeric_limits<int32_t>::min()) {
+                    throw std::out_of_range("int32_t overflow");
+                }
+                CALL(handler.Int32(static_cast<int32_t>(i64)));
+            } else if (i64 <= std::numeric_limits<int32_t>::max() && i64 >= std::numeric_limits<int32_t>::min()) {
+                CALL(handler.Int32(static_cast<int32_t>(i64)));
+            } else {
+                CALL(handler.Int64(i64));
+            }
         }
     }
 
-    template<typename ReadStream, typename Handler>
-    static void parseString(ReadStream& is, Handler& handler, bool isKey) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseString(RS& is, Handler& handler, bool isKey) {
         is.assertNext('"');
         std::string buffer;
         while (is.hasNext()) {
@@ -256,8 +262,9 @@ private:
         throw Exception(PARSE_MISS_QUOTATION_MARK);
     }
 
-    template<typename ReadStream, typename Handler>
-    static void parseArray(ReadStream& is, Handler& handler) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseArray(RS& is, Handler& handler) {
         CALL(handler.StartArray());
 
         is.assertNext('[');
@@ -284,8 +291,9 @@ private:
         }
     }
 
-    template<typename ReadStream, typename Handler>
-    static void parseObject(ReadStream& is, Handler& handler) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseObject(RS& is, Handler& handler) {
         CALL(handler.StartObject());
 
         is.assertNext('{');
@@ -301,12 +309,10 @@ private:
 
             parseString(is, handler, true);
 
-            // parse ':'
             parseWhitespace(is);
             if (is.next() != ':') throw Exception(PARSE_MISS_COLON);
             parseWhitespace(is);
 
-            // go on
             parseValue(is, handler);
             parseWhitespace(is);
             switch (is.next()) {
@@ -324,8 +330,9 @@ private:
 
 #undef CALL
 
-    template<typename ReadStream, typename Handler>
-    static void parseValue(ReadStream& is, Handler& handler) {
+    template<typename RS, typename Handler>
+    requires std::is_base_of_v<ReadStream<typename RS::Buffer_Type>, RS>
+    static void parseValue(RS& is, Handler& handler) {
         if (!is.hasNext()) throw Exception(PARSE_EXPECT_VALUE);
 
         switch (is.peek()) {
@@ -351,7 +358,30 @@ private:
 
     static bool isDigit19(char ch) { return ch >= '1' && ch <= '9'; }
 
-    static void encodeUtf8(std::string& buffer, unsigned u);
+    static void encodeUtf8(std::string& buffer, unsigned u) {
+        switch (u) {
+            case 0x00 ... 0x7F:
+                buffer.push_back(static_cast<char>(u & 0xFF));
+                break;
+            case 0x080 ... 0x7FF:
+                buffer.push_back(static_cast<char>(0xC0 | (u >> 6)));
+                buffer.push_back(static_cast<char>(0x80 | (u & 0x3F)));
+                break;
+            case 0x0800 ... 0xFFFF:
+                buffer.push_back(static_cast<char>(0xE0 | (u >> 12)));
+                buffer.push_back(static_cast<char>(0x80 | ((u >> 6) & 0x3F)));
+                buffer.push_back(static_cast<char>(0x80 | (u & 0x3F)));
+                break;
+            case 0x010000 ... 0x10FFFF:
+                buffer.push_back(static_cast<char>(0xF0 | (u >> 18)));
+                buffer.push_back(static_cast<char>(0x80 | ((u >> 12) & 0x3F)));
+                buffer.push_back(static_cast<char>(0x80 | ((u >> 6) & 0x3F)));
+                buffer.push_back(static_cast<char>(0x80 | (u & 0x3F)));
+                break;
+            default:
+                assert(false && "out of range");
+        }
+    }
 };
 
 }  // namespace json

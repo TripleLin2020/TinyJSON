@@ -730,9 +730,6 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/ReadStream.h">
 			<Option target="TinyJSON"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/Reader.cc">
-			<Option target="TinyJSON"/>
-		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Reader.h">
 			<Option target="TinyJSON"/>
 		</Unit>

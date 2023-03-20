@@ -182,33 +182,6 @@ TinyJSON/fast:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/build
 .PHONY : TinyJSON/fast
 
-Reader.o: Reader.cc.o
-
-.PHONY : Reader.o
-
-# target to build an object file
-Reader.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o
-.PHONY : Reader.cc.o
-
-Reader.i: Reader.cc.i
-
-.PHONY : Reader.i
-
-# target to preprocess a source file
-Reader.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.i
-.PHONY : Reader.cc.i
-
-Reader.s: Reader.cc.s
-
-.PHONY : Reader.s
-
-# target to generate assembly for a file
-Reader.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.s
-.PHONY : Reader.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -223,9 +196,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... TinyJSON"
-	@echo "... Reader.o"
-	@echo "... Reader.i"
-	@echo "... Reader.s"
 .PHONY : help
 
 

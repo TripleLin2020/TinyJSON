@@ -27,6 +27,8 @@ typedef std::pair<StringPtr, Value> Pair;
 typedef std::vector<Pair> Object;
 typedef std::shared_ptr<Object> ObjectPtr;
 
+
+//Must be consistent with the order defined by the member variable "data" type
 enum ValueType : size_t
 {
     TYPE_NULL = 0,
@@ -173,23 +175,23 @@ inline bool Value::writeTo(Handler& handler) const {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, std::monostate>) {
             CALL(handler.Null());
-        } else if constexpr(std::is_same_v<T, bool>) {
+        } else if constexpr (std::is_same_v<T, bool>) {
             CALL(handler.Bool(data));
-        } else if constexpr(std::is_same_v<T, int32_t>) {
+        } else if constexpr (std::is_same_v<T, int32_t>) {
             CALL(handler.Bool(data));
-        } else if constexpr(std::is_same_v<T, int64_t>) {
+        } else if constexpr (std::is_same_v<T, int64_t>) {
             CALL(handler.Bool(data));
-        } else if constexpr(std::is_same_v<T, double>) {
+        } else if constexpr (std::is_same_v<T, double>) {
             CALL(handler.Bool(data));
-        } else if constexpr(std::is_same_v<T, StringPtr>) {
+        } else if constexpr (std::is_same_v<T, StringPtr>) {
             CALL(handler.String(*getData<StringPtr>()));
-        } else if constexpr(std::is_same_v<T, ArrayPtr>) {
+        } else if constexpr (std::is_same_v<T, ArrayPtr>) {
             CALL(handler.StartArray());
             for (auto& val: *getData<ArrayPtr>()) {
                 CALL(val.writeTo(handler));
             }
             CALL(handler.EndArray());
-        } else if constexpr(std::is_same_v<T, ObjectPtr>) {
+        } else if constexpr (std::is_same_v<T, ObjectPtr>) {
             for (auto& pair: *getData<ObjectPtr>()) {
                 handler.Key(*pair.first);
                 CALL(pair.second.writeTo(handler));
@@ -199,43 +201,6 @@ inline bool Value::writeTo(Handler& handler) const {
             assert(false && "non-exhaustive visitor!");
         }
     }, data);
-//    switch (type_) {
-//        case TYPE_NULL:
-//            CALL(handler.Null());
-//            break;
-//        case TYPE_BOOL:
-//            CALL(handler.Bool(b_));
-//            break;
-//        case TYPE_INT32:
-//            CALL(handler.Int32(i32_));
-//            break;
-//        case TYPE_INT64:
-//            CALL(handler.Int64(i64_));
-//            break;
-//        case TYPE_DOUBLE:
-//            CALL(handler.Double(d_));
-//            break;
-//        case TYPE_STRING:
-//            CALL(handler.String(getStringView()));
-//            break;
-//        case TYPE_ARRAY:
-//            CALL(handler.StartArray());
-//            for (auto& val: getArray()) {
-//                CALL(val.writeTo(handler));
-//            }
-//            CALL(handler.EndArray());
-//            break;
-//        case TYPE_OBJECT:
-//            CALL(handler.StartObject());
-//            for (auto& member: getObject()) {
-//                handler.Key(member.key.getStringView());
-//                CALL(member.value.writeTo(handler));
-//            }
-//            CALL(handler.EndObject());
-//            break;
-//        default:
-//            assert(false && "bad type");
-//    }
     return true;
 }
 
