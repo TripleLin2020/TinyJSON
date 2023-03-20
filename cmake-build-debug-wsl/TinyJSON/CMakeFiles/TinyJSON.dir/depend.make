@@ -7,8 +7,3 @@ TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o: ../TinyJSON/Value.h
 TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o: ../TinyJSON/noncopyable.h
 TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o: ../TinyJSON/Reader.cc
 
-TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o: ../TinyJSON/Value.h
-TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o: ../TinyJSON/Writer.h
-TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o: ../TinyJSON/noncopyable.h
-TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o: ../TinyJSON/Writer.cc
-

@@ -1,25 +1,19 @@
 add_library(TinyJSON STATIC
         Exception.h
-        FileReadStream.h FileWriteStream.h
-        StringReadStream.h StringWriteStream.h
         Reader.cc Reader.h
-        Writer.cc Writer.h
+        Writer.h
         Value.h
         Document.h
         noncopyable.h
-        PrettyWriter.h)
+        PrettyWriter.h ReadStream.h WriteStream.h)
 install(TARGETS TinyJSON DESTINATION lib)
 
 set(HEADERS
         Document.h
         Exception.h
-        FileReadStream.h
-        FileWriteStream.h
         noncopyable.h
         PrettyWriter.h
         Reader.h
-        StringReadStream.h
-        StringWriteStream.h
         Value.h
         Writer.h
         )

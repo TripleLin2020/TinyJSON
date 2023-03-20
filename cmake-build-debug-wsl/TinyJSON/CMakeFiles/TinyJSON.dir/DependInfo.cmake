@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/lin/TinyJSON/TinyJSON/Reader.cc" "/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.o"
-  "/home/lin/TinyJSON/TinyJSON/Writer.cc" "/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

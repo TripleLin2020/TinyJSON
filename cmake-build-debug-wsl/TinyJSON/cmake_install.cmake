@@ -45,13 +45,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
     "/home/lin/TinyJSON/TinyJSON/Document.h"
     "/home/lin/TinyJSON/TinyJSON/Exception.h"
-    "/home/lin/TinyJSON/TinyJSON/FileReadStream.h"
-    "/home/lin/TinyJSON/TinyJSON/FileWriteStream.h"
     "/home/lin/TinyJSON/TinyJSON/noncopyable.h"
     "/home/lin/TinyJSON/TinyJSON/PrettyWriter.h"
     "/home/lin/TinyJSON/TinyJSON/Reader.h"
-    "/home/lin/TinyJSON/TinyJSON/StringReadStream.h"
-    "/home/lin/TinyJSON/TinyJSON/StringWriteStream.h"
     "/home/lin/TinyJSON/TinyJSON/Value.h"
     "/home/lin/TinyJSON/TinyJSON/Writer.h"
     )

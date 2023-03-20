@@ -1,8 +1,8 @@
 #ifndef JSON_READER_H
 #define JSON_READER_H
 
-#include <TinyJSON/Exception.h>
-#include <TinyJSON/Value.h>
+#include "TinyJSON/Exception.h"
+#include "TinyJSON/Value.h"
 
 #include <cassert>
 #include <cmath>
@@ -11,11 +11,13 @@
 #include <variant>
 #include <vector>
 
-namespace json {
+namespace json
+{
 
-class Reader : noncopyable {
+class Reader : noncopyable
+{
 public:
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static ParseError parse(ReadStream& is, Handler& handler) {
         try {
             parseWhitespace(is);
@@ -32,7 +34,7 @@ private:
 #define CALL(expr) \
     if (!(expr)) throw Exception(PARSE_USER_STOPPED)
 
-    template <typename ReadStream>
+    template<typename ReadStream>
     static unsigned parseHex4(ReadStream& is) {
         // unicode stuff from Milo's tutorial
         unsigned u = 0;
@@ -55,18 +57,19 @@ private:
         return u;
     }
 
-    template <typename ReadStream>
+    template<typename ReadStream>
     static void parseWhitespace(ReadStream& is) {
         while (is.hasNext()) {
             char ch = is.peek();
-            if (ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n')
+            if (ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n') {
                 is.next();
-            else
+            } else {
                 break;
+            }
         }
     }
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseLiteral(ReadStream& is, Handler& handler, const char* literal, ValueType type) {
         char c = *literal;
 
@@ -93,7 +96,7 @@ private:
         throw Exception(PARSE_BAD_VALUE);
     }
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseNumber(ReadStream& is, Handler& handler) {
         // parse 'NaN' (Not a Number) && 'Infinity'
         if (is.peek() == 'N') {
@@ -166,9 +169,7 @@ private:
                 double d = __gnu_cxx::__stoa(&std::strtod, "stod", &*start, &idx);
                 assert(start + idx == end);
                 CALL(handler.Double(d));
-            }
-
-            else {
+            } else {
                 int64_t i64 = __gnu_cxx::__stoa(&std::strtol, "stol", &*start, &idx, 10);
                 if (expectType == TYPE_INT64) {
                     CALL(handler.Int64(i64));
@@ -188,7 +189,7 @@ private:
         }
     }
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseString(ReadStream& is, Handler& handler, bool isKey) {
         is.assertNext('"');
         std::string buffer;
@@ -255,7 +256,7 @@ private:
         throw Exception(PARSE_MISS_QUOTATION_MARK);
     }
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseArray(ReadStream& is, Handler& handler) {
         CALL(handler.StartArray());
 
@@ -283,7 +284,7 @@ private:
         }
     }
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseObject(ReadStream& is, Handler& handler) {
         CALL(handler.StartObject());
 
@@ -323,7 +324,7 @@ private:
 
 #undef CALL
 
-    template <typename ReadStream, typename Handler>
+    template<typename ReadStream, typename Handler>
     static void parseValue(ReadStream& is, Handler& handler) {
         if (!is.hasNext()) throw Exception(PARSE_EXPECT_VALUE);
 
@@ -347,7 +348,9 @@ private:
 
 private:
     static bool isDigit(char ch) { return ch >= '0' && ch <= '9'; }
+
     static bool isDigit19(char ch) { return ch >= '1' && ch <= '9'; }
+
     static void encodeUtf8(std::string& buffer, unsigned u);
 };
 

@@ -7,185 +7,178 @@
 #include <cmath>
 #include <cstdint>
 #include <string>
-#include <vector>
+#include <stack>
+#include <charconv>
 
 namespace json
 {
-
-namespace detail
-{
-
-//
-// fast int to string conversion
-// buffer is NOT null terminated!!!
-//
-unsigned itoa(int32_t val, char* buf);
-
-unsigned itoa(int64_t val, char* buf);
-
-}  // namespace detail
-
 
 template<typename WriteStream> requires requires(WriteStream os) { os.put(""); }
 class Writer : noncopyable
 {
 public:
-    explicit Writer(WriteStream& os) : os_(os), seeValue_(false) {}
+    explicit Writer(WriteStream& _os) : os(_os) {}
 
     bool Null() {
         prefix(TYPE_NULL);
-        os_.put("null");
+        os.put("null");
         return true;
     }
 
     bool Bool(bool b) {
         prefix(TYPE_BOOL);
-        os_.put(b ? "true" : "false");
+        os.put(b ? "true" : "false");
         return true;
     }
 
     bool Int32(int32_t i32) {
         prefix(TYPE_INT32);
 
-        char buf[11];
-        unsigned cnt = detail::itoa(i32, buf);
-        os_.put(std::string_view(buf, cnt));
+        char buf[12]{};
+        if (auto res = std::to_chars(buf, buf + sizeof(buf), i32); res.ec != std::errc()) {
+            assert("Failed to convert double to string");
+            return false;
+        }
+        os.put(buf);
         return true;
     }
 
     bool Int64(int64_t i64) {
         prefix(TYPE_INT64);
 
-        char buf[20];
-        unsigned cnt = detail::itoa(i64, buf);
-        os_.put(std::string_view(buf, cnt));
+        char buf[21]{};
+        if (auto res = std::to_chars(buf, buf + sizeof(buf), i64); res.ec != std::errc()) {
+            assert("Failed to convert double to string");
+            return false;
+        }
+        os.put(buf);
         return true;
     }
 
     bool Double(double d) {
         prefix(TYPE_DOUBLE);
 
-        // fixme: faster conversion please
-        char buf[32];
+        char buf[32]{};
 
         if (std::isinf(d)) {
             strcpy(buf, "Infinity");
         } else if (std::isnan(d)) {
             strcpy(buf, "NaN");
         } else {
-            int n = sprintf(buf, "%.17g", d);
+            if (auto res = std::to_chars(buf, buf + sizeof(buf), d); res.ec != std::errc()) {
+                assert("Failed to convert double to string");
+                return false;
+            }
 
             // type information loss if ".0" not added
             // "1.0" -> double 1 -> "1"
-            assert(n > 0 && n < 32);
-            auto it = std::find_if_not(buf, buf + n, isdigit);
-            if (it == buf + n) {
+            auto it = std::find_if_not(buf, buf + sizeof(buf), isdigit);
+            if (it == buf + sizeof(buf)) {
                 strcat(buf, ".0");
             }
         }
 
-        os_.put(buf);
+        os.put(buf);
         return true;
     }
 
     bool String(std::string_view s) {
         prefix(TYPE_STRING);
-        os_.put('"');
+        os.put('"');
         for (auto c: s) {
-            auto u = static_cast<unsigned>(c);
+            auto u = static_cast<unsigned char>(c);
             switch (u) {
                 case '\"':
-                    os_.put("\\\"");
+                    os.put("\\\"");
                     break;
                 case '\b':
-                    os_.put("\\b");
+                    os.put("\\b");
                     break;
                 case '\f':
-                    os_.put("\\f");
+                    os.put("\\f");
                     break;
                 case '\n':
-                    os_.put("\\n");
+                    os.put("\\n");
                     break;
                 case '\r':
-                    os_.put("\\r");
+                    os.put("\\r");
                     break;
                 case '\t':
-                    os_.put("\\t");
+                    os.put("\\t");
                     break;
                 case '\\':
-                    os_.put("\\\\");
+                    os.put("\\\\");
                     break;
                 default:
                     if (u < 0x20) {
                         char buf[7];
                         snprintf(buf, 7, "\\u%04X", u);
-                        os_.put(buf);
+                        os.put(buf);
                     } else
-                        os_.put(c);
+                        os.put(c);
                     break;
             }
         }
 
-        os_.put('"');
+        os.put('"');
         return true;
     }
 
     bool StartObject() {
         prefix(TYPE_OBJECT);
-        stack_.emplace_back(false);
-        os_.put('{');
+        st.emplace(false);
+        os.put('{');
         return true;
     }
 
     bool Key(std::string_view s) {
         prefix(TYPE_STRING);
-        os_.put('"');
-        os_.put(s);
-        os_.put('"');
+        os.put('"');
+        os.put(s);
+        os.put('"');
         return true;
     }
 
     bool EndObject() {
-        assert(!stack_.empty());
-        assert(!stack_.back().inArray);
-        stack_.pop_back();
-        os_.put('}');
+        assert(!st.empty());
+        assert(!st.top().isInArray);
+        st.pop();
+        os.put('}');
         return true;
     }
 
     bool StartArray() {
         prefix(TYPE_ARRAY);
-        stack_.emplace_back(true);
-        os_.put('[');
+        st.emplace(true);
+        os.put('[');
         return true;
     }
 
     bool EndArray() {
-        assert(!stack_.empty());
-        assert(stack_.back().inArray);
-        stack_.pop_back();
-        os_.put(']');
+        assert(!st.empty());
+        assert(st.top().isInArray);
+        st.pop();
+        os.put(']');
         return true;
     }
 
 private:
+    // The function is used to determine whether a prefix such as ',' or ':' needs to be added,
+    // when the value is in an object or array.
     void prefix(ValueType type) {
-        if (seeValue_)
-            assert(!stack_.empty() && "root not singular");
-        else
-            seeValue_ = true;
+        if (st.empty()) return;
 
-        if (stack_.empty()) return;
-
-        auto& top = stack_.back();
-        if (top.inArray) {
-            if (top.valueCount > 0) os_.put(',');
+        auto& top = st.top();
+        if (top.isInArray) {
+            if (top.valueCount > 0) os.put(',');
         } else {
-            if (top.valueCount % 2 == 1)
-                os_.put(':');
-            else {
+            if (top.valueCount % 2 == 1) {
+                // object's value
+                os.put(':');
+            } else {
+                // object's key
                 assert(type == TYPE_STRING && "miss quotation mark");
-                if (top.valueCount > 0) os_.put(',');
+                if (top.valueCount > 0) os.put(',');
             }
         }
         top.valueCount++;
@@ -194,16 +187,15 @@ private:
 private:
     struct Level
     {
-        explicit Level(bool inArray_) : inArray(inArray_), valueCount(0) {}
+        explicit Level(bool _isInArray) : isInArray(_isInArray), valueCount(0) {}
 
-        bool inArray;  // in array or object
+        bool isInArray;  // true: in array; false: in object
         int valueCount;
     };
 
 private:
-    std::vector<Level> stack_;
-    WriteStream& os_;
-    bool seeValue_;
+    std::stack<Level> st;
+    WriteStream& os;
 };
 
 }  // namespace json

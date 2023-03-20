@@ -209,33 +209,6 @@ Reader.cc.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Reader.cc.s
 .PHONY : Reader.cc.s
 
-Writer.o: Writer.cc.o
-
-.PHONY : Writer.o
-
-# target to build an object file
-Writer.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.o
-.PHONY : Writer.cc.o
-
-Writer.i: Writer.cc.i
-
-.PHONY : Writer.i
-
-# target to preprocess a source file
-Writer.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.i
-.PHONY : Writer.cc.i
-
-Writer.s: Writer.cc.s
-
-.PHONY : Writer.s
-
-# target to generate assembly for a file
-Writer.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f TinyJSON/CMakeFiles/TinyJSON.dir/build.make TinyJSON/CMakeFiles/TinyJSON.dir/Writer.cc.s
-.PHONY : Writer.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -253,9 +226,6 @@ help:
 	@echo "... Reader.o"
 	@echo "... Reader.i"
 	@echo "... Reader.s"
-	@echo "... Writer.o"
-	@echo "... Writer.i"
-	@echo "... Writer.s"
 .PHONY : help
 
 

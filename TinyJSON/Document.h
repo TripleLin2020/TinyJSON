@@ -2,7 +2,7 @@
 #define JSON_DOCUMENT_H
 
 #include "TinyJSON/Reader.h"
-#include "TinyJSON/StringReadStream.h"
+#include "ReadStream.h"
 #include "TinyJSON/Value.h"
 
 #include <string>

@@ -724,13 +724,10 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Exception.h">
 			<Option target="TinyJSON"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/FileReadStream.h">
-			<Option target="TinyJSON"/>
-		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/FileWriteStream.h">
-			<Option target="TinyJSON"/>
-		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/PrettyWriter.h">
+			<Option target="TinyJSON"/>
+		</Unit>
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/ReadStream.h">
 			<Option target="TinyJSON"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Reader.cc">
@@ -739,16 +736,10 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Reader.h">
 			<Option target="TinyJSON"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/StringReadStream.h">
-			<Option target="TinyJSON"/>
-		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/StringWriteStream.h">
-			<Option target="TinyJSON"/>
-		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Value.h">
 			<Option target="TinyJSON"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/TinyJSON/Writer.cc">
+		<Unit filename="/home/lin/TinyJSON/TinyJSON/WriteStream.h">
 			<Option target="TinyJSON"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/Writer.h">

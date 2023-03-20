@@ -1,7 +1,7 @@
 #include "sample.h"
 
-#include "TinyJSON/StringReadStream.h"
-#include "TinyJSON/FileWriteStream.h"
+#include "ReadStream.h"
+#include "WriteStream.h"
 #include "TinyJSON/Writer.h"
 #include "TinyJSON/Reader.h"
 
