@@ -58,7 +58,7 @@ using namespace std::string_view_literals;
         Document doc;                          \
         ParseError err = doc.parse(json);      \
         EXPECT_EQ(err, PARSE_OK);              \
-        EXPECT_EQ(doc.getType(), TYPE_STRING); \
+        EXPECT_EQ(doc.getType(), TYPE_STRING_PTR); \
         EXPECT_EQ(*doc.getData<StringPtr>(), str);       \
     } while (false)
 
@@ -147,25 +147,25 @@ TEST(json_value, array) {
         Document doc;
         err = doc.parse("[]");
         EXPECT_EQ(err, PARSE_OK);
-        EXPECT_EQ(doc.getType(), TYPE_ARRAY);
+        EXPECT_EQ(doc.getType(), TYPE_ARRAY_PTR);
         EXPECT_TRUE(doc.getData<ArrayPtr>()->empty());
     }
     {
         Document doc;
         err = doc.parse("[[]]");
         EXPECT_EQ(err, PARSE_OK);
-        EXPECT_EQ(doc.getType(), TYPE_ARRAY);
+        EXPECT_EQ(doc.getType(), TYPE_ARRAY_PTR);
 
         auto arrPtr = doc.getData<ArrayPtr>();
         EXPECT_EQ(arrPtr->size(), 1);
-        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_ARRAY);
+        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_ARRAY_PTR);
         EXPECT_TRUE((*arrPtr)[0].getData<ArrayPtr>()->empty());
     }
     {
         Document doc;
         err = doc.parse("[0, 1, 2, 3, 4]");
         EXPECT_EQ(err, PARSE_OK);
-        EXPECT_EQ(doc.getType(), TYPE_ARRAY);
+        EXPECT_EQ(doc.getType(), TYPE_ARRAY_PTR);
 
         auto arrPtr = doc.getData<ArrayPtr>();
 
@@ -179,13 +179,13 @@ TEST(json_value, array) {
         Document doc;
         err = doc.parse("[ { } , { } , { } , { } , { } ]");
         EXPECT_EQ(err, PARSE_OK);
-        EXPECT_EQ(doc.getType(), TYPE_ARRAY);
+        EXPECT_EQ(doc.getType(), TYPE_ARRAY_PTR);
 
         auto arrPtr = doc.getData<ArrayPtr>();
 
         EXPECT_EQ(5, arrPtr->size());
         for (size_t i = 0; i < arrPtr->size(); i++) {
-            EXPECT_EQ((*arrPtr)[i].getType(), TYPE_OBJECT);
+            EXPECT_EQ((*arrPtr)[i].getType(), TYPE_OBJECT_PTR);
             EXPECT_EQ((*arrPtr)[i].getData<ObjectPtr>()->size(), 0);
         }
     }
@@ -193,11 +193,11 @@ TEST(json_value, array) {
         Document doc;
         err = doc.parse("[\"hehe\", true, false, null, 0.0]");
         EXPECT_EQ(err, PARSE_OK);
-        EXPECT_EQ(doc.getType(), TYPE_ARRAY);
+        EXPECT_EQ(doc.getType(), TYPE_ARRAY_PTR);
 
         auto arrPtr = doc.getData<ArrayPtr>();
         EXPECT_EQ(5, arrPtr->size());
-        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_STRING);
+        EXPECT_EQ((*arrPtr)[0].getType(), TYPE_STRING_PTR);
         EXPECT_EQ((*arrPtr)[1].getType(), TYPE_BOOL);
         EXPECT_EQ((*arrPtr)[2].getType(), TYPE_BOOL);
         EXPECT_EQ((*arrPtr)[3].getType(), TYPE_NULL);
@@ -222,16 +222,16 @@ TEST(json_value, object) {
         " } ");
 
     EXPECT_EQ(err, PARSE_OK);
-    EXPECT_EQ(doc.getType(), TYPE_OBJECT);
+    EXPECT_EQ(doc.getType(), TYPE_OBJECT_PTR);
 
     EXPECT_EQ(doc.getData<ObjectPtr>()->size(), 7);
     EXPECT_EQ(doc["n"].getType(), TYPE_NULL);
     EXPECT_EQ(doc["f"].getType(), TYPE_BOOL);
     EXPECT_EQ(doc["t"].getType(), TYPE_BOOL);
     EXPECT_EQ(doc["i"].getType(), TYPE_INT32);
-    EXPECT_EQ(doc["s"].getType(), TYPE_STRING);
-    EXPECT_EQ(doc["a"].getType(), TYPE_ARRAY);
-    EXPECT_EQ(doc["o"].getType(), TYPE_OBJECT);
+    EXPECT_EQ(doc["s"].getType(), TYPE_STRING_PTR);
+    EXPECT_EQ(doc["a"].getType(), TYPE_ARRAY_PTR);
+    EXPECT_EQ(doc["o"].getType(), TYPE_OBJECT_PTR);
 
     EXPECT_EQ(doc["i"].getData<int32_t>(), 123);
     EXPECT_EQ(*doc["s"].getData<StringPtr>(), "abc");

@@ -88,17 +88,17 @@ public:  // handler
 
 private:
     Value* add(Value&& value) {
-        if (isAddedValue)
-            assert(!st.empty() && "root not singular");
-        else {
-            isAddedValue = true;
+        if (isFirstValue) {
+            isFirstValue = false;
             data = value.data;
             return this;
+        } else {
+            assert(!st.empty() && "root not singular");
         }
 
         Level& top = st.top();
         if (top.type() == TYPE_ARRAY_PTR) {
-            top.value->addValue(std::move(value));
+            top.value->addToArray(std::move(value));
             top.valueCount++;
             return top.lastValue();
         } else {
@@ -121,9 +121,9 @@ private:
     {
         explicit Level(Value* value_) : value(value_), valueCount(0) {}
 
-        ValueType type() const { return value->getType(); }
+        [[nodiscard]] ValueType type() const { return value->getType(); }
 
-        Value* lastValue() {
+        [[nodiscard]] Value* lastValue() const {
             if (type() == TYPE_ARRAY_PTR) {
                 return &std::get<ArrayPtr>(value->data)->back();
             } else {
@@ -139,7 +139,7 @@ private:
 private:
     std::stack<Level> st;
     Value key;
-    bool isAddedValue = false;
+    bool isFirstValue = true;
 };
 
 }  // namespace json

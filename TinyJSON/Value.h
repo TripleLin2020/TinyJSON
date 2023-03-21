@@ -143,24 +143,25 @@ public:
 
     template<typename T>
     requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double, String>>
-    void addPair(String&& key, T&& value) {
+    void addPair(const String&& key, T&& value) {
         assert(data.index() == TYPE_OBJECT_PTR && "Non-object types cannot add key-value pairs");
         std::get<ObjectPtr>(data)->emplace_back(std::make_shared<String>(key), value);
     };
 
-    void addPair(Value&& key, Value&& value) {
+    void addPair(const Value&& key, const Value&& value) {
         assert(data.index() == TYPE_OBJECT_PTR && "Non-object types cannot add key-value pairs");
-        std::get<ObjectPtr>(data)->emplace_back(std::get<StringPtr>(key.data), value);
+        std::get<ObjectPtr>(data)->emplace_back(key.getData<StringPtr>(), value);
     };
 
+    // When the type is Array, it is used to add Value
     template<typename T>
     requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>
-    void addValue(T value) {
+    void addToArray(T value) {
         std::get<ArrayPtr>(data)->emplace_back(value);
     }
 
     // When the type is Array, it is used to add Value
-    void addValue(Value&& value) {
+    void addToArray(Value&& value) {
         std::get<ArrayPtr>(data)->emplace_back(std::forward<Value>(value));
     }
 
@@ -176,7 +177,6 @@ public:
     bool writeTo(Handler& handler) const;
 
 private:
-
     std::variant<std::monostate, bool, int32_t, int64_t, double, StringPtr, ArrayPtr, ObjectPtr> data;
 };
 

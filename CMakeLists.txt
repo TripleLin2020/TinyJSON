@@ -13,7 +13,7 @@ set(CXX_FLAGS
         -fno-omit-frame-pointer # linux perf
         -Wall
         -Wextra
-        -Werror
+#        -Werror
         -Wconversion
         -Wno-unused-parameter
         -Wold-style-cast
