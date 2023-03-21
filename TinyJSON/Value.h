@@ -41,8 +41,6 @@ enum ValueType : size_t
     TYPE_OBJECT_PTR,
 };
 
-class Document;
-
 class Value
 {
     friend class Document;
@@ -161,6 +159,7 @@ public:
         std::get<ArrayPtr>(data)->emplace_back(value);
     }
 
+    // When the type is Array, it is used to add Value
     void addValue(Value&& value) {
         std::get<ArrayPtr>(data)->emplace_back(std::forward<Value>(value));
     }

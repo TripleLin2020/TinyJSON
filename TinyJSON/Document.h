@@ -6,6 +6,7 @@
 #include "Value.h"
 
 #include <string>
+#include <stack>
 
 namespace json
 {
@@ -27,77 +28,75 @@ public:
 
 public:  // handler
     bool Null() {
-        addValue(Value());
+        add(Value());
         return true;
     }
 
     bool Bool(bool b) {
-        addValue(Value(b));
+        add(Value(b));
         return true;
     }
 
     bool Int32(int32_t i32) {
-        addValue(Value(i32));
+        add(Value(i32));
         return true;
     }
 
     bool Int64(int64_t i64) {
-        addValue(Value(i64));
+        add(Value(i64));
         return true;
     }
 
     bool Double(double d) {
-        addValue(Value(d));
+        add(Value(d));
         return true;
     }
 
     bool String(std::string_view s) {
-        addValue(Value(s));
+        add(Value(s));
         return true;
     }
 
     bool StartObject() {
-        auto value = addValue(Value::emptyObject());
-        stack_.emplace_back(value);
+        st.emplace(add(Value::emptyObject()));
         return true;
     }
 
     bool Key(std::string_view s) {
-        addValue(Value(s));
+        add(Value(s));
         return true;
     }
 
     bool EndObject() {
-        assert(!stack_.empty());
-        assert(stack_.back().type() == TYPE_OBJECT_PTR);
-        stack_.pop_back();
+        assert(!st.empty());
+        assert(st.top().type() == TYPE_OBJECT_PTR);
+        st.pop();
         return true;
     }
 
     bool StartArray() {
-        auto value = addValue(Value::emptyArray());
-        stack_.emplace_back(value);
+        st.emplace(add(Value::emptyArray()));
         return true;
     }
 
     bool EndArray() {
-        assert(!stack_.empty());
-        assert(stack_.back().type() == TYPE_ARRAY_PTR);
-        stack_.pop_back();
+        assert(!st.empty());
+        assert(st.top().type() == TYPE_ARRAY_PTR);
+        st.pop();
         return true;
     }
 
 private:
-    Value* addValue(Value&& value) {
-        if (seeValue_)
-            assert(!stack_.empty() && "root not singular");
+    Value* add(Value&& value) {
+        if (isAddedValue)
+            assert(!st.empty() && "root not singular");
         else {
-            seeValue_ = true;
+            isAddedValue = true;
             data = value.data;
             return this;
         }
 
-        auto& top = stack_.back();
+        Level& top = st.top();
         if (top.type() == TYPE_ARRAY_PTR) {
             top.value->addValue(std::move(value));
             top.valueCount++;
@@ -106,12 +105,11 @@ private:
             assert(top.type() == TYPE_OBJECT_PTR);
 
             if (top.valueCount % 2 == 0) {
-                // assert(type == TYPE_STRING && "miss quotation mark");
-                key_ = std::move(value);
+                key = std::move(value);
                 top.valueCount++;
-                return &key_;
+                return &key;
             } else {
-                top.value->addPair(std::move(key_), std::move(value));
+                top.value->addPair(std::move(key), std::move(value));
                 top.valueCount++;
                 return top.lastValue();
             }
@@ -129,6 +127,7 @@ private:
             if (type() == TYPE_ARRAY_PTR) {
                 return &std::get<ArrayPtr>(value->data)->back();
             } else {
+                assert(type() == TYPE_OBJECT_PTR);
                 return &std::get<ObjectPtr>(value->data)->back().second;
             }
         }
@@ -138,9 +137,9 @@ private:
     };
 
 private:
-    std::vector<Level> stack_;
-    Value key_;
-    bool seeValue_ = false;
+    std::stack<Level> st;
+    Value key;
+    bool isAddedValue = false;
 };
 
 }  // namespace json
