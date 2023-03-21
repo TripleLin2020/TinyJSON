@@ -9,7 +9,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "../CMakeLists.txt"
   "../TinyJSON/CMakeLists.txt"
-  "../TinyJSON/test/CMakeLists.txt"
   "CMakeFiles/3.16.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
@@ -119,17 +118,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "TinyJSON/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "TinyJSON/test/CMakeFiles/CMakeDirectoryInformation.cmake"
   "example/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "TinyJSON/CMakeFiles/TinyJSON.dir/DependInfo.cmake"
-  "TinyJSON/test/CMakeFiles/test_roundtrip.dir/DependInfo.cmake"
-  "TinyJSON/test/CMakeFiles/test_value.dir/DependInfo.cmake"
-  "TinyJSON/test/CMakeFiles/test_error.dir/DependInfo.cmake"
-  "TinyJSON/test/CMakeFiles/gtest.dir/DependInfo.cmake"
   "example/CMakeFiles/write_document.dir/DependInfo.cmake"
   "example/CMakeFiles/add_one.dir/DependInfo.cmake"
   "example/CMakeFiles/print_document.dir/DependInfo.cmake"

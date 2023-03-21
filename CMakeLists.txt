@@ -33,14 +33,11 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(TinyJSON)
 
-#if(NOT CMAKE_BUILD_NO_EXAMPLES)
-#    add_subdirectory(example)
-#endif()
-#if (CMAKE_BUILD_TESTS)
-#    add_subdirectory(TinyJSON/test)
-#endif()
-
-add_subdirectory(TinyJSON/test)
-add_subdirectory(example)
+if(NOT CMAKE_BUILD_NO_EXAMPLES)
+    add_subdirectory(example)
+endif()
+if (CMAKE_BUILD_TESTS)
+    add_subdirectory(TinyJSON/test)
+endif()
 
 set_target_properties(TinyJSON PROPERTIES LINKER_LANGUAGE CXX)

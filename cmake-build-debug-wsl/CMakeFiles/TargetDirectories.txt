@@ -13,17 +13,6 @@
 /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/CMakeFiles/list_install_components.dir
 /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/CMakeFiles/rebuild_cache.dir
 /home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/CMakeFiles/TinyJSON.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/install/strip.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/install.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/list_install_components.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/rebuild_cache.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/edit_cache.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/test.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/test_roundtrip.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/test_value.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/install/local.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/test_error.dir
-/home/lin/TinyJSON/cmake-build-debug-wsl/TinyJSON/test/CMakeFiles/gtest.dir
 /home/lin/TinyJSON/cmake-build-debug-wsl/example/CMakeFiles/install/strip.dir
 /home/lin/TinyJSON/cmake-build-debug-wsl/example/CMakeFiles/install/local.dir
 /home/lin/TinyJSON/cmake-build-debug-wsl/example/CMakeFiles/install.dir
