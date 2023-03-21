@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../lib/libTinyJSON.a  
-/usr/bin/ranlib ../lib/libTinyJSON.a
