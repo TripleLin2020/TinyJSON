@@ -1,5 +1,5 @@
-#ifndef JSON_READER_H
-#define JSON_READER_H
+#ifndef TINY_JSON_READER_H
+#define TINY_JSON_READER_H
 
 #include "Exception.h"
 #include "Value.h"
@@ -39,7 +39,6 @@ private:
 
     template<typename ReadStream>
     static unsigned parseHex4(ReadStream& is) {
-        // unicode stuff from Milo's tutorial
         unsigned u = 0;
         for (int i = 0; i < 4; i++) {
             u <<= 4;
@@ -237,7 +236,6 @@ private:
                             buffer.push_back('\t');
                             break;
                         case 'u': {
-                            // unicode stuff from Milo's tutorial
                             unsigned u = parseHex4(is);
                             if (u >= 0xD800 && u <= 0xDBFF) {
                                 if (is.next() != '\\') throw Exception(PARSE_BAD_UNICODE_SURROGATE);
@@ -386,4 +384,4 @@ private:
 
 }  // namespace json
 
-#endif  // JSON_READER_H
+#endif  // TINY_JSON_READER_H

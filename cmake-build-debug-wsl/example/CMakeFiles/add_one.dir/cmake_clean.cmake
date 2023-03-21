@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "../bin/add_one"
   "../bin/add_one.pdb"
-  "CMakeFiles/add_one.dir/add_one.cc.o"
+  "CMakeFiles/add_one.dir/add_one.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

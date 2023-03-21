@@ -1,22 +1,19 @@
-#include "TinyJSON/Document.h"
-#include "TinyJSON/Writer.h"
-#include "TinyJSON/FileWriteStream.h"
+#include "Document.h"
+#include "Writer.h"
+#include "WriteStream.h"
 
 #include <iostream>
 
-
-
 using namespace json;
 
-int main()
-{
+int main() {
     Document document;
     ParseError err = document.parse(R"(
 {
     "precision": "zip",
     "Latitude": 37.766800000000003,
     "Longitude": -122.3959,
-    "Address": "sadfasdf",
+    "Address": "tiny",
     "City": "SAN FRANCISCO",
     "State": "CA",
     "Zip": "94107",
@@ -28,18 +25,20 @@ int main()
 
     if (err != PARSE_OK) {
         puts(parseErrorStr(err));
-        exit(1);
+        return 1;
     }
 
-
+    // 获取Key"State"对应的Value
     Value& state = document["State"];
-    std::cout << "State: " << state.getData<StringPtr>() << '\n';
+    std::cout << "State: " << state << '\n';
 
+    // 获取Key"Zip"对应的Value
     Value& zip = document["Zip"];
-    std::cout << "Zip: " << zip.getStringView() << "\n";
+    std::cout << "Zip: " << zip << "\n";
 
-    zip.setInt32(9527);
-    std::cout << "Zip: " << zip.getInt32() << "\n";
+    zip = 9527;
+    std::cout << "Zip: " << zip << "\n";
 
-    document.addMember("123", "456");
+    document.addPair("123", "456");
+    std::cout << "123: " << document["123"] << "\n";
 }

@@ -59,22 +59,22 @@ template <typename Handler>
 class AddOne: noncopyable
 {
 public:
-    explicit AddOne(Handler& handler): handler_(handler) {}
+    explicit AddOne(Handler& handler): handler(handler) {}
 
-    bool Null()                { return handler_.Null(); }
-    bool Bool(bool b)          { return handler_.Bool(b); }
-    bool Int32(int32_t i32)    { return handler_.Int32(i32 + 1); } // add one
-    bool Int64(int64_t i64)    { return handler_.Int64(i64 + 1); } // add one
-    bool Double(double d)      { return handler_.Double(d + 1); }  // add one
-    bool String(string_view s) { return handler_.String(s); }
-    bool StartObject()         { return handler_.StartObject(); }
-    bool Key(string_view s)    { return handler_.Key(s); }
-    bool EndObject()           { return handler_.EndObject(); }
-    bool StartArray()          { return handler_.StartArray(); }
-    bool EndArray()            { return handler_.EndArray(); }
+    bool Null()                { return handler.Null(); }
+    bool Bool(bool b)          { return handler.Bool(b); }
+    bool Int32(int32_t i32)    { return handler.Int32(i32 + 1); } // add one
+    bool Int64(int64_t i64)    { return handler.Int64(i64 + 1); } // add one
+    bool Double(double d)      { return handler.Double(d + 1); }  // add one
+    bool String(string_view s) { return handler.String(s); }
+    bool StartObject()         { return handler.StartObject(); }
+    bool Key(string_view s)    { return handler.Key(s); }
+    bool EndObject()           { return handler.EndObject(); }
+    bool StartArray()          { return handler.StartArray(); }
+    bool EndArray()            { return handler.EndArray(); }
 
 private:
-    Handler& handler_;
+    Handler& handler;
 };
 
 int main()

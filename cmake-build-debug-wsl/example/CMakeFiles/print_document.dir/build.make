@@ -57,27 +57,27 @@ include example/CMakeFiles/print_document.dir/progress.make
 # Include the compile flags for this target's objects.
 include example/CMakeFiles/print_document.dir/flags.make
 
-example/CMakeFiles/print_document.dir/print_document.cc.o: example/CMakeFiles/print_document.dir/flags.make
-example/CMakeFiles/print_document.dir/print_document.cc.o: ../example/print_document.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/print_document.dir/print_document.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/print_document.dir/print_document.cc.o -c /home/lin/TinyJSON/example/print_document.cc
+example/CMakeFiles/print_document.dir/print_document.cpp.o: example/CMakeFiles/print_document.dir/flags.make
+example/CMakeFiles/print_document.dir/print_document.cpp.o: ../example/print_document.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/print_document.dir/print_document.cpp.o"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/print_document.dir/print_document.cpp.o -c /home/lin/TinyJSON/example/print_document.cpp
 
-example/CMakeFiles/print_document.dir/print_document.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/print_document.dir/print_document.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/print_document.cc > CMakeFiles/print_document.dir/print_document.cc.i
+example/CMakeFiles/print_document.dir/print_document.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/print_document.dir/print_document.cpp.i"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/print_document.cpp > CMakeFiles/print_document.dir/print_document.cpp.i
 
-example/CMakeFiles/print_document.dir/print_document.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/print_document.dir/print_document.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/print_document.cc -o CMakeFiles/print_document.dir/print_document.cc.s
+example/CMakeFiles/print_document.dir/print_document.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/print_document.dir/print_document.cpp.s"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/print_document.cpp -o CMakeFiles/print_document.dir/print_document.cpp.s
 
 # Object files for target print_document
 print_document_OBJECTS = \
-"CMakeFiles/print_document.dir/print_document.cc.o"
+"CMakeFiles/print_document.dir/print_document.cpp.o"
 
 # External object files for target print_document
 print_document_EXTERNAL_OBJECTS =
 
-bin/print_document: example/CMakeFiles/print_document.dir/print_document.cc.o
+bin/print_document: example/CMakeFiles/print_document.dir/print_document.cpp.o
 bin/print_document: example/CMakeFiles/print_document.dir/build.make
 bin/print_document: lib/libTinyJSON.a
 bin/print_document: example/CMakeFiles/print_document.dir/link.txt

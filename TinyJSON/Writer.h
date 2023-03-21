@@ -1,5 +1,5 @@
-#ifndef JSON_WRITER_H
-#define JSON_WRITER_H
+#ifndef TINY_JSON_WRITER_H
+#define TINY_JSON_WRITER_H
 
 #include "Value.h"
 
@@ -83,7 +83,7 @@ public:
     }
 
     bool String(std::string_view s) {
-        prefix(TYPE_STRING);
+        prefix(TYPE_STRING_PTR);
         os.put('"');
         for (auto c: s) {
             auto u = static_cast<unsigned char>(c);
@@ -125,14 +125,14 @@ public:
     }
 
     bool StartObject() {
-        prefix(TYPE_OBJECT);
+        prefix(TYPE_OBJECT_PTR);
         st.emplace(false);
         os.put('{');
         return true;
     }
 
     bool Key(std::string_view s) {
-        prefix(TYPE_STRING);
+        prefix(TYPE_STRING_PTR);
         os.put('"');
         os.put(s);
         os.put('"');
@@ -148,7 +148,7 @@ public:
     }
 
     bool StartArray() {
-        prefix(TYPE_ARRAY);
+        prefix(TYPE_ARRAY_PTR);
         st.emplace(true);
         os.put('[');
         return true;
@@ -177,7 +177,7 @@ private:
                 os.put(':');
             } else {
                 // object's key
-                assert(type == TYPE_STRING && "miss quotation mark");
+                assert(type == TYPE_STRING_PTR && "miss quotation mark");
                 if (top.valueCount > 0) os.put(',');
             }
         }
@@ -200,4 +200,4 @@ private:
 
 }  // namespace json
 
-#endif  //JSON_WRITER_H
+#endif  //TINY_JSON_WRITER_H

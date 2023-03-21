@@ -24,35 +24,34 @@ namespace json
   XX(MISS_COMMA_OR_CURLY_BRACKET, "miss comma or curly bracket") \
   XX(USER_STOPPED, "user stopped parse")
 
-enum ParseError {
+enum ParseError
+{
 #define GEN_ERRNO(e, s) PARSE_##e,
     ERROR_MAP(GEN_ERRNO)
 #undef GEN_ERRNO
 };
 
-inline const char* parseErrorStr(ParseError err)
-{
+inline const char* parseErrorStr(ParseError err) {
     const static char* tab[] = {
-#define GEN_STRERR(e, n) n,
-            ERROR_MAP(GEN_STRERR)
-#undef GEN_STRERR
+#define GEN_STR_ERR(e, n) n,
+            ERROR_MAP(GEN_STR_ERR)
+#undef GEN_STR_ERR
     };
     assert(err >= 0 && err < sizeof(tab) / sizeof(tab[0]));
     return tab[err];
 }
 
-class Exception: public std::exception
+class Exception : public std::exception
 {
 public:
-    explicit Exception(ParseError err):
-            err_(err) { }
-    const char* what() const noexcept
-    { return parseErrorStr(err_); }
-    ParseError err() const
-    { return err_; }
+    explicit Exception(ParseError err) : error(err) {}
+
+    [[nodiscard]] const char* what() const noexcept override { return parseErrorStr(error); }
+
+    [[nodiscard]] ParseError err() const { return error; }
 
 private:
-    ParseError err_;
+    ParseError error;
 };
 
 #undef ERROR_MAP

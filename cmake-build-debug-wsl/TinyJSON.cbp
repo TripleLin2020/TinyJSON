@@ -757,7 +757,7 @@
 		<Unit filename="/home/lin/TinyJSON/TinyJSON/test/test_value.cc">
 			<Option target="test_value"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/example/add_one.cc">
+		<Unit filename="/home/lin/TinyJSON/example/add_one.cpp">
 			<Option target="add_one"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/example/generate.cc">
@@ -769,7 +769,7 @@
 		<Unit filename="/home/lin/TinyJSON/example/pretty.cc">
 			<Option target="pretty"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/example/print_document.cc">
+		<Unit filename="/home/lin/TinyJSON/example/print_document.cpp">
 			<Option target="print_document"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/example/sample.h">
@@ -778,7 +778,7 @@
 		<Unit filename="/home/lin/TinyJSON/example/struct.cc">
 			<Option target="struct"/>
 		</Unit>
-		<Unit filename="/home/lin/TinyJSON/example/write_document.cc">
+		<Unit filename="/home/lin/TinyJSON/example/write_document.cpp">
 			<Option target="write_document"/>
 		</Unit>
 		<Unit filename="/home/lin/TinyJSON/third_party/gtest/googletest/src/gtest-all.cc">

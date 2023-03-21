@@ -57,27 +57,27 @@ include example/CMakeFiles/add_one.dir/progress.make
 # Include the compile flags for this target's objects.
 include example/CMakeFiles/add_one.dir/flags.make
 
-example/CMakeFiles/add_one.dir/add_one.cc.o: example/CMakeFiles/add_one.dir/flags.make
-example/CMakeFiles/add_one.dir/add_one.cc.o: ../example/add_one.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/add_one.dir/add_one.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/add_one.dir/add_one.cc.o -c /home/lin/TinyJSON/example/add_one.cc
+example/CMakeFiles/add_one.dir/add_one.cpp.o: example/CMakeFiles/add_one.dir/flags.make
+example/CMakeFiles/add_one.dir/add_one.cpp.o: ../example/add_one.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/add_one.dir/add_one.cpp.o"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/add_one.dir/add_one.cpp.o -c /home/lin/TinyJSON/example/add_one.cpp
 
-example/CMakeFiles/add_one.dir/add_one.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/add_one.dir/add_one.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/add_one.cc > CMakeFiles/add_one.dir/add_one.cc.i
+example/CMakeFiles/add_one.dir/add_one.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/add_one.dir/add_one.cpp.i"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/add_one.cpp > CMakeFiles/add_one.dir/add_one.cpp.i
 
-example/CMakeFiles/add_one.dir/add_one.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/add_one.dir/add_one.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/add_one.cc -o CMakeFiles/add_one.dir/add_one.cc.s
+example/CMakeFiles/add_one.dir/add_one.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/add_one.dir/add_one.cpp.s"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/add_one.cpp -o CMakeFiles/add_one.dir/add_one.cpp.s
 
 # Object files for target add_one
 add_one_OBJECTS = \
-"CMakeFiles/add_one.dir/add_one.cc.o"
+"CMakeFiles/add_one.dir/add_one.cpp.o"
 
 # External object files for target add_one
 add_one_EXTERNAL_OBJECTS =
 
-bin/add_one: example/CMakeFiles/add_one.dir/add_one.cc.o
+bin/add_one: example/CMakeFiles/add_one.dir/add_one.cpp.o
 bin/add_one: example/CMakeFiles/add_one.dir/build.make
 bin/add_one: lib/libTinyJSON.a
 bin/add_one: example/CMakeFiles/add_one.dir/link.txt

@@ -57,27 +57,27 @@ include example/CMakeFiles/write_document.dir/progress.make
 # Include the compile flags for this target's objects.
 include example/CMakeFiles/write_document.dir/flags.make
 
-example/CMakeFiles/write_document.dir/write_document.cc.o: example/CMakeFiles/write_document.dir/flags.make
-example/CMakeFiles/write_document.dir/write_document.cc.o: ../example/write_document.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/write_document.dir/write_document.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/write_document.dir/write_document.cc.o -c /home/lin/TinyJSON/example/write_document.cc
+example/CMakeFiles/write_document.dir/write_document.cpp.o: example/CMakeFiles/write_document.dir/flags.make
+example/CMakeFiles/write_document.dir/write_document.cpp.o: ../example/write_document.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/write_document.dir/write_document.cpp.o"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/write_document.dir/write_document.cpp.o -c /home/lin/TinyJSON/example/write_document.cpp
 
-example/CMakeFiles/write_document.dir/write_document.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/write_document.dir/write_document.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/write_document.cc > CMakeFiles/write_document.dir/write_document.cc.i
+example/CMakeFiles/write_document.dir/write_document.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/write_document.dir/write_document.cpp.i"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/write_document.cpp > CMakeFiles/write_document.dir/write_document.cpp.i
 
-example/CMakeFiles/write_document.dir/write_document.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/write_document.dir/write_document.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/write_document.cc -o CMakeFiles/write_document.dir/write_document.cc.s
+example/CMakeFiles/write_document.dir/write_document.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/write_document.dir/write_document.cpp.s"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/write_document.cpp -o CMakeFiles/write_document.dir/write_document.cpp.s
 
 # Object files for target write_document
 write_document_OBJECTS = \
-"CMakeFiles/write_document.dir/write_document.cc.o"
+"CMakeFiles/write_document.dir/write_document.cpp.o"
 
 # External object files for target write_document
 write_document_EXTERNAL_OBJECTS =
 
-bin/write_document: example/CMakeFiles/write_document.dir/write_document.cc.o
+bin/write_document: example/CMakeFiles/write_document.dir/write_document.cpp.o
 bin/write_document: example/CMakeFiles/write_document.dir/build.make
 bin/write_document: lib/libTinyJSON.a
 bin/write_document: example/CMakeFiles/write_document.dir/link.txt

@@ -1,5 +1,7 @@
-#ifndef JSON_VALUE_H
-#define JSON_VALUE_H
+#ifndef TINY_JSON_VALUE_H
+#define TINY_JSON_VALUE_H
+
+#include "noncopyable.h"
 
 #include <cassert>
 #include <cstring>
@@ -10,8 +12,6 @@
 #include <algorithm>
 #include <atomic>
 #include <variant>
-
-#include <TinyJSON/noncopyable.h>
 
 namespace json
 {
@@ -36,9 +36,9 @@ enum ValueType : size_t
     TYPE_INT32,
     TYPE_INT64,
     TYPE_DOUBLE,
-    TYPE_STRING,
-    TYPE_ARRAY,
-    TYPE_OBJECT,
+    TYPE_STRING_PTR,
+    TYPE_ARRAY_PTR,
+    TYPE_OBJECT_PTR,
 };
 
 class Document;
@@ -46,6 +46,8 @@ class Document;
 class Value
 {
     friend class Document;
+
+    friend std::ostream& operator<<(std::ostream& os, const Value& v);
 
 public:
     Value() : data(std::monostate()) {}
@@ -71,7 +73,16 @@ public:
         return *this;
     }
 
+    Value& operator=(const Value& rhs) = default;
+
     ~Value() = default;
+
+    template<typename T>
+    requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>
+    Value& operator=(const T rhs) {
+        data = rhs;
+        return *this;
+    }
 
     static Value emptyString() {
         Value v;
@@ -95,7 +106,8 @@ public:
 
     template<typename T>
     requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double, StringPtr, ArrayPtr, ObjectPtr>>
-    // 获取类成员变量data保存的值，可以是bool, int32_t, int64_t, double基础类型，或StringPtr, ArrayPtr, ObjectPtr类型的智能指针
+    // Get the value saved by the class member variable "data",
+    // which can be bool, int32_t, int64_t, double, or a smart pointer of type StringPtr, ArrayPtr, ObjectPtr
     [[nodiscard]] T getData() const {
         return std::get<T>(data);
     }
@@ -132,12 +144,14 @@ public:
     [[nodiscard]] const Pair* findPair(const std::string& key) const { return const_cast<Value&>(*this).findPair(key); }
 
     template<typename T>
-    requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>
-    void addPair(std::string&& key, T&& value) {
-        std::get<ObjectPtr>(data)->emplace_back(key, value);
+    requires std::convertible_to<T, std::variant<bool, int32_t, int64_t, double, String>>
+    void addPair(String&& key, T&& value) {
+        assert(data.index() == TYPE_OBJECT_PTR && "Non-object types cannot add key-value pairs");
+        std::get<ObjectPtr>(data)->emplace_back(std::make_shared<String>(key), value);
     };
 
     void addPair(Value&& key, Value&& value) {
+        assert(data.index() == TYPE_OBJECT_PTR && "Non-object types cannot add key-value pairs");
         std::get<ObjectPtr>(data)->emplace_back(std::get<StringPtr>(key.data), value);
     };
 
@@ -171,18 +185,18 @@ private:
 
 template<typename Handler>
 inline bool Value::writeTo(Handler& handler) const {
-    std::visit([&](auto& arg) {
+    bool res = std::visit([&](auto& arg) {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, std::monostate>) {
             CALL(handler.Null());
         } else if constexpr (std::is_same_v<T, bool>) {
-            CALL(handler.Bool(data));
+            CALL(handler.Bool(getData<bool>()));
         } else if constexpr (std::is_same_v<T, int32_t>) {
-            CALL(handler.Bool(data));
+            CALL(handler.Int32(getData<int32_t>()));
         } else if constexpr (std::is_same_v<T, int64_t>) {
-            CALL(handler.Bool(data));
+            CALL(handler.Int64(getData<int64_t>()));
         } else if constexpr (std::is_same_v<T, double>) {
-            CALL(handler.Bool(data));
+            CALL(handler.Double(getData<double>()));
         } else if constexpr (std::is_same_v<T, StringPtr>) {
             CALL(handler.String(*getData<StringPtr>()));
         } else if constexpr (std::is_same_v<T, ArrayPtr>) {
@@ -192,6 +206,7 @@ inline bool Value::writeTo(Handler& handler) const {
             }
             CALL(handler.EndArray());
         } else if constexpr (std::is_same_v<T, ObjectPtr>) {
+            CALL(handler.StartObject());
             for (auto& pair: *getData<ObjectPtr>()) {
                 handler.Key(*pair.first);
                 CALL(pair.second.writeTo(handler));
@@ -199,13 +214,30 @@ inline bool Value::writeTo(Handler& handler) const {
             CALL(handler.EndObject());
         } else {
             assert(false && "non-exhaustive visitor!");
+            return false;
         }
+        return true;
     }, data);
-    return true;
+    return res;
 }
 
 #undef CALL
 
+std::ostream& operator<<(std::ostream& os, const Value& v) {
+    std::visit([&](auto& data) {
+        using T = std::decay_t<decltype(data)>;
+        if constexpr (std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>) {
+            os << data;
+        } else if constexpr (std::is_same_v<T, StringPtr>) {
+            os << *data;
+        } else {
+            assert(false && "unsupported type");
+        }
+
+    }, v.data);
+    return os;
 }
 
-#endif //JSON_VALUE_H
+}
+
+#endif //TINY_JSON_VALUE_H

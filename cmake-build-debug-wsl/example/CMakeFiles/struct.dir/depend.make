@@ -3,10 +3,8 @@
 
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/Document.h
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/Exception.h
-example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/FileWriteStream.h
+example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/ReadStream.h
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/Reader.h
-example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/StringReadStream.h
-example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/StringWriteStream.h
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/Value.h
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/Writer.h
 example/CMakeFiles/struct.dir/struct.cc.o: ../TinyJSON/noncopyable.h

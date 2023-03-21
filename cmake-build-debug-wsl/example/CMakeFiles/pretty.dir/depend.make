@@ -3,10 +3,9 @@
 
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/Document.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/Exception.h
-example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/FileWriteStream.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/PrettyWriter.h
+example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/ReadStream.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/Reader.h
-example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/StringReadStream.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/Value.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/Writer.h
 example/CMakeFiles/pretty.dir/pretty.cc.o: ../TinyJSON/noncopyable.h

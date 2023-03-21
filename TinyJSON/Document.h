@@ -1,9 +1,9 @@
-#ifndef JSON_DOCUMENT_H
-#define JSON_DOCUMENT_H
+#ifndef TINY_JSON_DOCUMENT_H
+#define TINY_JSON_DOCUMENT_H
 
-#include "TinyJSON/Reader.h"
+#include "Reader.h"
 #include "ReadStream.h"
-#include "TinyJSON/Value.h"
+#include "Value.h"
 
 #include <string>
 
@@ -69,7 +69,7 @@ public:  // handler
 
     bool EndObject() {
         assert(!stack_.empty());
-        assert(stack_.back().type() == TYPE_OBJECT);
+        assert(stack_.back().type() == TYPE_OBJECT_PTR);
         stack_.pop_back();
         return true;
     }
@@ -82,7 +82,7 @@ public:  // handler
 
     bool EndArray() {
         assert(!stack_.empty());
-        assert(stack_.back().type() == TYPE_ARRAY);
+        assert(stack_.back().type() == TYPE_ARRAY_PTR);
         stack_.pop_back();
         return true;
     }
@@ -98,12 +98,12 @@ private:
         }
 
         auto& top = stack_.back();
-        if (top.type() == TYPE_ARRAY) {
+        if (top.type() == TYPE_ARRAY_PTR) {
             top.value->addValue(std::move(value));
             top.valueCount++;
             return top.lastValue();
         } else {
-            assert(top.type() == TYPE_OBJECT);
+            assert(top.type() == TYPE_OBJECT_PTR);
 
             if (top.valueCount % 2 == 0) {
                 // assert(type == TYPE_STRING && "miss quotation mark");
@@ -126,7 +126,7 @@ private:
         ValueType type() const { return value->getType(); }
 
         Value* lastValue() {
-            if (type() == TYPE_ARRAY) {
+            if (type() == TYPE_ARRAY_PTR) {
                 return &std::get<ArrayPtr>(value->data)->back();
             } else {
                 return &std::get<ObjectPtr>(value->data)->back().second;
@@ -145,4 +145,4 @@ private:
 
 }  // namespace json
 
-#endif  // JSON_DOCUMENT_H
+#endif  // TINY_JSON_DOCUMENT_H

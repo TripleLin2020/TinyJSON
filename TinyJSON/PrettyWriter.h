@@ -1,15 +1,10 @@
-//
-// Created by frank on 17-12-27.
-//
+#ifndef TINY_JSON_PRETTY_WRITER_H
+#define TINY_JSON_PRETTY_WRITER_H
 
-#ifndef TJSON_PRETTYWRITER_H
-#define TJSON_PRETTYWRITER_H
-
-#include <TinyJSON/Writer.h>
+#include "Writer.h"
 
 namespace json
 {
-
 
 template <typename WriteStream>
 class PrettyWriter: noncopyable
@@ -150,4 +145,4 @@ private:
 
 }
 
-#endif //TJSON_PRETTYWRITER_H
+#endif //TINY_JSON_PRETTY_WRITER_H

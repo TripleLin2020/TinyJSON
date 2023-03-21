@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "../bin/print_document"
   "../bin/print_document.pdb"
-  "CMakeFiles/print_document.dir/print_document.cc.o"
+  "CMakeFiles/print_document.dir/print_document.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

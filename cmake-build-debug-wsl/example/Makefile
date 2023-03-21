@@ -272,32 +272,32 @@ print_document/fast:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
 .PHONY : print_document/fast
 
-add_one.o: add_one.cc.o
+add_one.o: add_one.cpp.o
 
 .PHONY : add_one.o
 
 # target to build an object file
-add_one.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cc.o
-.PHONY : add_one.cc.o
+add_one.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cpp.o
+.PHONY : add_one.cpp.o
 
-add_one.i: add_one.cc.i
+add_one.i: add_one.cpp.i
 
 .PHONY : add_one.i
 
 # target to preprocess a source file
-add_one.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cc.i
-.PHONY : add_one.cc.i
+add_one.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cpp.i
+.PHONY : add_one.cpp.i
 
-add_one.s: add_one.cc.s
+add_one.s: add_one.cpp.s
 
 .PHONY : add_one.s
 
 # target to generate assembly for a file
-add_one.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cc.s
-.PHONY : add_one.cc.s
+add_one.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cpp.s
+.PHONY : add_one.cpp.s
 
 generate.o: generate.cc.o
 
@@ -380,32 +380,32 @@ pretty.cc.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/pretty.cc.s
 .PHONY : pretty.cc.s
 
-print_document.o: print_document.cc.o
+print_document.o: print_document.cpp.o
 
 .PHONY : print_document.o
 
 # target to build an object file
-print_document.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cc.o
-.PHONY : print_document.cc.o
+print_document.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cpp.o
+.PHONY : print_document.cpp.o
 
-print_document.i: print_document.cc.i
+print_document.i: print_document.cpp.i
 
 .PHONY : print_document.i
 
 # target to preprocess a source file
-print_document.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cc.i
-.PHONY : print_document.cc.i
+print_document.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cpp.i
+.PHONY : print_document.cpp.i
 
-print_document.s: print_document.cc.s
+print_document.s: print_document.cpp.s
 
 .PHONY : print_document.s
 
 # target to generate assembly for a file
-print_document.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cc.s
-.PHONY : print_document.cc.s
+print_document.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cpp.s
+.PHONY : print_document.cpp.s
 
 struct.o: struct.cc.o
 
@@ -434,32 +434,32 @@ struct.cc.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cc.s
 .PHONY : struct.cc.s
 
-write_document.o: write_document.cc.o
+write_document.o: write_document.cpp.o
 
 .PHONY : write_document.o
 
 # target to build an object file
-write_document.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cc.o
-.PHONY : write_document.cc.o
+write_document.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cpp.o
+.PHONY : write_document.cpp.o
 
-write_document.i: write_document.cc.i
+write_document.i: write_document.cpp.i
 
 .PHONY : write_document.i
 
 # target to preprocess a source file
-write_document.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cc.i
-.PHONY : write_document.cc.i
+write_document.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cpp.i
+.PHONY : write_document.cpp.i
 
-write_document.s: write_document.cc.s
+write_document.s: write_document.cpp.s
 
 .PHONY : write_document.s
 
 # target to generate assembly for a file
-write_document.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cc.s
-.PHONY : write_document.cc.s
+write_document.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/write_document.cpp.s
+.PHONY : write_document.cpp.s
 
 # Help Target
 help:
