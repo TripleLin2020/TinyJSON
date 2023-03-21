@@ -68,48 +68,17 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
@@ -123,17 +92,48 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,34 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-example/CMakeFiles/parse.dir/rule:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/parse.dir/rule
-.PHONY : example/CMakeFiles/parse.dir/rule
+example/CMakeFiles/write_document.dir/rule:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/write_document.dir/rule
+.PHONY : example/CMakeFiles/write_document.dir/rule
 
 # Convenience name for target.
-parse: example/CMakeFiles/parse.dir/rule
+write_document: example/CMakeFiles/write_document.dir/rule
 
-.PHONY : parse
+.PHONY : write_document
 
 # fast build rule for target.
-parse/fast:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/build
-.PHONY : parse/fast
-
-# Convenience name for target.
-example/CMakeFiles/struct.dir/rule:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/struct.dir/rule
-.PHONY : example/CMakeFiles/struct.dir/rule
-
-# Convenience name for target.
-struct: example/CMakeFiles/struct.dir/rule
-
-.PHONY : struct
-
-# fast build rule for target.
-struct/fast:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/build
-.PHONY : struct/fast
+write_document/fast:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/build
+.PHONY : write_document/fast
 
 # Convenience name for target.
 example/CMakeFiles/add_one.dir/rule:
@@ -213,34 +198,19 @@ add_one/fast:
 .PHONY : add_one/fast
 
 # Convenience name for target.
-example/CMakeFiles/pretty.dir/rule:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/pretty.dir/rule
-.PHONY : example/CMakeFiles/pretty.dir/rule
+example/CMakeFiles/print_document.dir/rule:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/print_document.dir/rule
+.PHONY : example/CMakeFiles/print_document.dir/rule
 
 # Convenience name for target.
-pretty: example/CMakeFiles/pretty.dir/rule
+print_document: example/CMakeFiles/print_document.dir/rule
 
-.PHONY : pretty
+.PHONY : print_document
 
 # fast build rule for target.
-pretty/fast:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/build
-.PHONY : pretty/fast
-
-# Convenience name for target.
-example/CMakeFiles/write_document.dir/rule:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/write_document.dir/rule
-.PHONY : example/CMakeFiles/write_document.dir/rule
-
-# Convenience name for target.
-write_document: example/CMakeFiles/write_document.dir/rule
-
-.PHONY : write_document
-
-# fast build rule for target.
-write_document/fast:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/build
-.PHONY : write_document/fast
+print_document/fast:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
+.PHONY : print_document/fast
 
 # Convenience name for target.
 example/CMakeFiles/generate.dir/rule:
@@ -258,19 +228,34 @@ generate/fast:
 .PHONY : generate/fast
 
 # Convenience name for target.
-example/CMakeFiles/print_document.dir/rule:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/print_document.dir/rule
-.PHONY : example/CMakeFiles/print_document.dir/rule
+example/CMakeFiles/struct.dir/rule:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/struct.dir/rule
+.PHONY : example/CMakeFiles/struct.dir/rule
 
 # Convenience name for target.
-print_document: example/CMakeFiles/print_document.dir/rule
+struct: example/CMakeFiles/struct.dir/rule
 
-.PHONY : print_document
+.PHONY : struct
 
 # fast build rule for target.
-print_document/fast:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
-.PHONY : print_document/fast
+struct/fast:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/build
+.PHONY : struct/fast
+
+# Convenience name for target.
+example/CMakeFiles/parse.dir/rule:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f CMakeFiles/Makefile2 example/CMakeFiles/parse.dir/rule
+.PHONY : example/CMakeFiles/parse.dir/rule
+
+# Convenience name for target.
+parse: example/CMakeFiles/parse.dir/rule
+
+.PHONY : parse
+
+# fast build rule for target.
+parse/fast:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/build
+.PHONY : parse/fast
 
 add_one.o: add_one.cpp.o
 
@@ -299,86 +284,59 @@ add_one.cpp.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/add_one.cpp.s
 .PHONY : add_one.cpp.s
 
-generate.o: generate.cc.o
+generate.o: generate.cpp.o
 
 .PHONY : generate.o
 
 # target to build an object file
-generate.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cc.o
-.PHONY : generate.cc.o
+generate.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cpp.o
+.PHONY : generate.cpp.o
 
-generate.i: generate.cc.i
+generate.i: generate.cpp.i
 
 .PHONY : generate.i
 
 # target to preprocess a source file
-generate.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cc.i
-.PHONY : generate.cc.i
+generate.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cpp.i
+.PHONY : generate.cpp.i
 
-generate.s: generate.cc.s
+generate.s: generate.cpp.s
 
 .PHONY : generate.s
 
 # target to generate assembly for a file
-generate.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cc.s
-.PHONY : generate.cc.s
+generate.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/generate.cpp.s
+.PHONY : generate.cpp.s
 
-parse.o: parse.cc.o
+parse.o: parse.cpp.o
 
 .PHONY : parse.o
 
 # target to build an object file
-parse.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cc.o
-.PHONY : parse.cc.o
+parse.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cpp.o
+.PHONY : parse.cpp.o
 
-parse.i: parse.cc.i
+parse.i: parse.cpp.i
 
 .PHONY : parse.i
 
 # target to preprocess a source file
-parse.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cc.i
-.PHONY : parse.cc.i
+parse.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cpp.i
+.PHONY : parse.cpp.i
 
-parse.s: parse.cc.s
+parse.s: parse.cpp.s
 
 .PHONY : parse.s
 
 # target to generate assembly for a file
-parse.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cc.s
-.PHONY : parse.cc.s
-
-pretty.o: pretty.cc.o
-
-.PHONY : pretty.o
-
-# target to build an object file
-pretty.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/pretty.cc.o
-.PHONY : pretty.cc.o
-
-pretty.i: pretty.cc.i
-
-.PHONY : pretty.i
-
-# target to preprocess a source file
-pretty.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/pretty.cc.i
-.PHONY : pretty.cc.i
-
-pretty.s: pretty.cc.s
-
-.PHONY : pretty.s
-
-# target to generate assembly for a file
-pretty.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/pretty.cc.s
-.PHONY : pretty.cc.s
+parse.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/parse.cpp.s
+.PHONY : parse.cpp.s
 
 print_document.o: print_document.cpp.o
 
@@ -407,32 +365,32 @@ print_document.cpp.s:
 	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/print_document.cpp.s
 .PHONY : print_document.cpp.s
 
-struct.o: struct.cc.o
+struct.o: struct.cpp.o
 
 .PHONY : struct.o
 
 # target to build an object file
-struct.cc.o:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cc.o
-.PHONY : struct.cc.o
+struct.cpp.o:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cpp.o
+.PHONY : struct.cpp.o
 
-struct.i: struct.cc.i
+struct.i: struct.cpp.i
 
 .PHONY : struct.i
 
 # target to preprocess a source file
-struct.cc.i:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cc.i
-.PHONY : struct.cc.i
+struct.cpp.i:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cpp.i
+.PHONY : struct.cpp.i
 
-struct.s: struct.cc.s
+struct.s: struct.cpp.s
 
 .PHONY : struct.s
 
 # target to generate assembly for a file
-struct.cc.s:
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cc.s
-.PHONY : struct.cc.s
+struct.cpp.s:
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl && $(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/struct.cpp.s
+.PHONY : struct.cpp.s
 
 write_document.o: write_document.cpp.o
 
@@ -468,19 +426,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... parse"
-	@echo "... struct"
-	@echo "... add_one"
-	@echo "... pretty"
-	@echo "... test"
-	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... write_document"
-	@echo "... list_install_components"
-	@echo "... generate"
-	@echo "... install"
-	@echo "... print_document"
 	@echo "... install/local"
+	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... write_document"
+	@echo "... add_one"
+	@echo "... print_document"
+	@echo "... generate"
+	@echo "... struct"
+	@echo "... parse"
 	@echo "... add_one.o"
 	@echo "... add_one.i"
 	@echo "... add_one.s"
@@ -490,9 +447,6 @@ help:
 	@echo "... parse.o"
 	@echo "... parse.i"
 	@echo "... parse.s"
-	@echo "... pretty.o"
-	@echo "... pretty.i"
-	@echo "... pretty.s"
 	@echo "... print_document.o"
 	@echo "... print_document.i"
 	@echo "... print_document.s"

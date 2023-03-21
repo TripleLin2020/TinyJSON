@@ -57,27 +57,27 @@ include example/CMakeFiles/struct.dir/progress.make
 # Include the compile flags for this target's objects.
 include example/CMakeFiles/struct.dir/flags.make
 
-example/CMakeFiles/struct.dir/struct.cc.o: example/CMakeFiles/struct.dir/flags.make
-example/CMakeFiles/struct.dir/struct.cc.o: ../example/struct.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/struct.dir/struct.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/struct.dir/struct.cc.o -c /home/lin/TinyJSON/example/struct.cc
+example/CMakeFiles/struct.dir/struct.cpp.o: example/CMakeFiles/struct.dir/flags.make
+example/CMakeFiles/struct.dir/struct.cpp.o: ../example/struct.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/struct.dir/struct.cpp.o"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/struct.dir/struct.cpp.o -c /home/lin/TinyJSON/example/struct.cpp
 
-example/CMakeFiles/struct.dir/struct.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/struct.dir/struct.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/struct.cc > CMakeFiles/struct.dir/struct.cc.i
+example/CMakeFiles/struct.dir/struct.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/struct.dir/struct.cpp.i"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/struct.cpp > CMakeFiles/struct.dir/struct.cpp.i
 
-example/CMakeFiles/struct.dir/struct.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/struct.dir/struct.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/struct.cc -o CMakeFiles/struct.dir/struct.cc.s
+example/CMakeFiles/struct.dir/struct.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/struct.dir/struct.cpp.s"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/struct.cpp -o CMakeFiles/struct.dir/struct.cpp.s
 
 # Object files for target struct
 struct_OBJECTS = \
-"CMakeFiles/struct.dir/struct.cc.o"
+"CMakeFiles/struct.dir/struct.cpp.o"
 
 # External object files for target struct
 struct_EXTERNAL_OBJECTS =
 
-bin/struct: example/CMakeFiles/struct.dir/struct.cc.o
+bin/struct: example/CMakeFiles/struct.dir/struct.cpp.o
 bin/struct: example/CMakeFiles/struct.dir/build.make
 bin/struct: lib/libTinyJSON.a
 bin/struct: example/CMakeFiles/struct.dir/link.txt

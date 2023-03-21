@@ -181,97 +181,6 @@ TinyJSON/fast:
 .PHONY : TinyJSON/fast
 
 #=============================================================================
-# Target rules for targets named parse
-
-# Build rule for target.
-parse: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parse
-.PHONY : parse
-
-# fast build rule for target.
-parse/fast:
-	$(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/build
-.PHONY : parse/fast
-
-#=============================================================================
-# Target rules for targets named struct
-
-# Build rule for target.
-struct: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 struct
-.PHONY : struct
-
-# fast build rule for target.
-struct/fast:
-	$(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/build
-.PHONY : struct/fast
-
-#=============================================================================
-# Target rules for targets named add_one
-
-# Build rule for target.
-add_one: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 add_one
-.PHONY : add_one
-
-# fast build rule for target.
-add_one/fast:
-	$(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/build
-.PHONY : add_one/fast
-
-#=============================================================================
-# Target rules for targets named pretty
-
-# Build rule for target.
-pretty: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pretty
-.PHONY : pretty
-
-# fast build rule for target.
-pretty/fast:
-	$(MAKE) -f example/CMakeFiles/pretty.dir/build.make example/CMakeFiles/pretty.dir/build
-.PHONY : pretty/fast
-
-#=============================================================================
-# Target rules for targets named write_document
-
-# Build rule for target.
-write_document: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 write_document
-.PHONY : write_document
-
-# fast build rule for target.
-write_document/fast:
-	$(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/build
-.PHONY : write_document/fast
-
-#=============================================================================
-# Target rules for targets named generate
-
-# Build rule for target.
-generate: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 generate
-.PHONY : generate
-
-# fast build rule for target.
-generate/fast:
-	$(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/build
-.PHONY : generate/fast
-
-#=============================================================================
-# Target rules for targets named print_document
-
-# Build rule for target.
-print_document: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 print_document
-.PHONY : print_document
-
-# fast build rule for target.
-print_document/fast:
-	$(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
-.PHONY : print_document/fast
-
-#=============================================================================
 # Target rules for targets named test_roundtrip
 
 # Build rule for target.
@@ -324,17 +233,82 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
-# Target rules for targets named bench_parse
+# Target rules for targets named write_document
 
 # Build rule for target.
-bench_parse: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bench_parse
-.PHONY : bench_parse
+write_document: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 write_document
+.PHONY : write_document
 
 # fast build rule for target.
-bench_parse/fast:
-	$(MAKE) -f TinyJSON/bench/CMakeFiles/bench_parse.dir/build.make TinyJSON/bench/CMakeFiles/bench_parse.dir/build
-.PHONY : bench_parse/fast
+write_document/fast:
+	$(MAKE) -f example/CMakeFiles/write_document.dir/build.make example/CMakeFiles/write_document.dir/build
+.PHONY : write_document/fast
+
+#=============================================================================
+# Target rules for targets named add_one
+
+# Build rule for target.
+add_one: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 add_one
+.PHONY : add_one
+
+# fast build rule for target.
+add_one/fast:
+	$(MAKE) -f example/CMakeFiles/add_one.dir/build.make example/CMakeFiles/add_one.dir/build
+.PHONY : add_one/fast
+
+#=============================================================================
+# Target rules for targets named print_document
+
+# Build rule for target.
+print_document: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 print_document
+.PHONY : print_document
+
+# fast build rule for target.
+print_document/fast:
+	$(MAKE) -f example/CMakeFiles/print_document.dir/build.make example/CMakeFiles/print_document.dir/build
+.PHONY : print_document/fast
+
+#=============================================================================
+# Target rules for targets named generate
+
+# Build rule for target.
+generate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 generate
+.PHONY : generate
+
+# fast build rule for target.
+generate/fast:
+	$(MAKE) -f example/CMakeFiles/generate.dir/build.make example/CMakeFiles/generate.dir/build
+.PHONY : generate/fast
+
+#=============================================================================
+# Target rules for targets named struct
+
+# Build rule for target.
+struct: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 struct
+.PHONY : struct
+
+# fast build rule for target.
+struct/fast:
+	$(MAKE) -f example/CMakeFiles/struct.dir/build.make example/CMakeFiles/struct.dir/build
+.PHONY : struct/fast
+
+#=============================================================================
+# Target rules for targets named parse
+
+# Build rule for target.
+parse: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parse
+.PHONY : parse
+
+# fast build rule for target.
+parse/fast:
+	$(MAKE) -f example/CMakeFiles/parse.dir/build.make example/CMakeFiles/parse.dir/build
+.PHONY : parse/fast
 
 # Help Target
 help:
@@ -350,18 +324,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... TinyJSON"
-	@echo "... parse"
-	@echo "... struct"
-	@echo "... add_one"
-	@echo "... pretty"
-	@echo "... write_document"
-	@echo "... generate"
-	@echo "... print_document"
 	@echo "... test_roundtrip"
 	@echo "... test_value"
 	@echo "... test_error"
 	@echo "... gtest"
-	@echo "... bench_parse"
+	@echo "... write_document"
+	@echo "... add_one"
+	@echo "... print_document"
+	@echo "... generate"
+	@echo "... struct"
+	@echo "... parse"
 .PHONY : help
 
 

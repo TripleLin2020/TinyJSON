@@ -161,6 +161,11 @@ public:
     }
 
     // When the type is Array, it is used to add Value
+    void addToArray(const String& value) {
+        std::get<ArrayPtr>(data)->emplace_back(value);
+    }
+
+    // When the type is Array, it is used to add Value
     void addToArray(Value&& value) {
         std::get<ArrayPtr>(data)->emplace_back(std::forward<Value>(value));
     }

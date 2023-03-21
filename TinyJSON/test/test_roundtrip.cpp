@@ -1,7 +1,7 @@
-#include <TinyJSON/Document.h>
-#include <TinyJSON/StringWriteStream.h>
-#include <TinyJSON/Writer.h>
-#include <gtest/gtest.h>
+#include "TinyJSON/Document.h"
+#include "TinyJSON/WriteStream.h"
+#include "TinyJSON/Writer.h"
+#include "gtest/gtest.h"
 
 using namespace json;
 

@@ -39,12 +39,8 @@ add_subdirectory(TinyJSON)
 #if (CMAKE_BUILD_TESTS)
 #    add_subdirectory(TinyJSON/test)
 #endif()
-#if (CMAKE_BUILD_BENCHMARK)
-#    add_subdirectory(TinyJSON/bench)
-#endif()
 
-add_subdirectory(example)
 add_subdirectory(TinyJSON/test)
-add_subdirectory(TinyJSON/bench)
+add_subdirectory(example)
 
 set_target_properties(TinyJSON PROPERTIES LINKER_LANGUAGE CXX)

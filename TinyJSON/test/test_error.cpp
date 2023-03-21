@@ -1,4 +1,4 @@
-#include <TinyJSON/Document.h>
+#include "TinyJSON/Document.h"
 #include <gtest/gtest.h>
 
 using namespace json;

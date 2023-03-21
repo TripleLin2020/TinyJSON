@@ -86,18 +86,18 @@ private:
             switch (type) {
                 case TYPE_NULL:
                     CALL(handler.Null());
-                    break;
+                    return;
                 case TYPE_BOOL:
                     CALL(handler.Bool(c == 't'));
-                    break;
+                    return;
                 case TYPE_DOUBLE:
                     CALL(handler.Double(c == 'N' ? NAN : INFINITY));
-                    break;
+                    return;
                 default:
                     assert(false && "bad type");
-                    throw Exception(PARSE_BAD_VALUE);
             }
         }
+        throw Exception(PARSE_BAD_VALUE);
     }
 
     template<typename RS, typename Handler>
@@ -167,22 +167,20 @@ private:
 
         if (expectType == TYPE_DOUBLE) {
             double d;
-            if (auto res = std::from_chars(start, end, d); res.ec != std::errc()) {
-                assert("Fail to convert string to double");
-                throw Exception(PARSE_BAD_VALUE);
+            if (auto res = std::from_chars(&*start, &*end, d); res.ec != std::errc()) {
+                throw Exception(PARSE_NUMBER_TOO_BIG);
             }
             CALL(handler.Double(d));
         } else {
             int64_t i64;
-            if (auto res = std::from_chars(start, end, i64); res.ec != std::errc()) {
-                assert("Fail to convert string to int64");
-                throw Exception(PARSE_BAD_VALUE);
+            if (auto res = std::from_chars(&*start, &*end, i64); res.ec != std::errc()) {
+                throw Exception(PARSE_NUMBER_TOO_BIG);
             }
             if (expectType == TYPE_INT64) {
                 CALL(handler.Int64(i64));
             } else if (expectType == TYPE_INT32) {
                 if (i64 > std::numeric_limits<int32_t>::max() || i64 < std::numeric_limits<int32_t>::min()) {
-                    throw std::out_of_range("int32_t overflow");
+                    throw Exception(PARSE_NUMBER_TOO_BIG);
                 }
                 CALL(handler.Int32(static_cast<int32_t>(i64)));
             } else if (i64 <= std::numeric_limits<int32_t>::max() && i64 >= std::numeric_limits<int32_t>::min()) {
@@ -190,6 +188,7 @@ private:
             } else {
                 CALL(handler.Int64(i64));
             }
+
         }
     }
 
@@ -352,6 +351,7 @@ private:
     }
 
 private:
+
     static bool isDigit(char ch) { return ch >= '0' && ch <= '9'; }
 
     static bool isDigit19(char ch) { return ch >= '1' && ch <= '9'; }

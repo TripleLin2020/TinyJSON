@@ -16,13 +16,13 @@ endforeach()
 add_library(gtest ${GOOGLETEST_SOURCES})
 target_link_libraries(gtest pthread)
 
-add_executable(test_error test_error.cc)
+add_executable(test_error test_error.cpp)
 target_link_libraries(test_error TinyJSON gtest)
 
-add_executable(test_value test_value.cc)
+add_executable(test_value test_value.cpp)
 target_link_libraries(test_value TinyJSON gtest)
 
-add_executable(test_roundtrip test_roundtrip.cc)
+add_executable(test_roundtrip test_roundtrip.cpp)
 target_link_libraries(test_roundtrip TinyJSON gtest)
 
 set(TEST_DIR ${EXECUTABLE_OUTPUT_PATH})

@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <string_view>
 
-#include <TinyJSON/Writer.h>
-#include <TinyJSON/FileWriteStream.h>
+#include "Writer.h"
+#include "WriteStream.h"
 
 using namespace json;
 using namespace std::string_view_literals;

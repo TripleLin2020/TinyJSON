@@ -46,7 +46,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/lin/TinyJSON/TinyJSON/Document.h"
     "/home/lin/TinyJSON/TinyJSON/Exception.h"
     "/home/lin/TinyJSON/TinyJSON/noncopyable.h"
-    "/home/lin/TinyJSON/TinyJSON/PrettyWriter.h"
     "/home/lin/TinyJSON/TinyJSON/Reader.h"
     "/home/lin/TinyJSON/TinyJSON/Value.h"
     "/home/lin/TinyJSON/TinyJSON/Writer.h"

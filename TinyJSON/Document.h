@@ -26,7 +26,7 @@ public:
         return Reader::parse(is, *this);
     }
 
-public:  // handler
+public:
     bool Null() {
         add(Value());
         return true;

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "../bin/generate"
   "../bin/generate.pdb"
-  "CMakeFiles/generate.dir/generate.cc.o"
+  "CMakeFiles/generate.dir/generate.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "../bin/struct"
   "../bin/struct.pdb"
-  "CMakeFiles/struct.dir/struct.cc.o"
+  "CMakeFiles/struct.dir/struct.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

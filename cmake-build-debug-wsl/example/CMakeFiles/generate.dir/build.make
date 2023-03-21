@@ -57,27 +57,27 @@ include example/CMakeFiles/generate.dir/progress.make
 # Include the compile flags for this target's objects.
 include example/CMakeFiles/generate.dir/flags.make
 
-example/CMakeFiles/generate.dir/generate.cc.o: example/CMakeFiles/generate.dir/flags.make
-example/CMakeFiles/generate.dir/generate.cc.o: ../example/generate.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/generate.dir/generate.cc.o"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/generate.dir/generate.cc.o -c /home/lin/TinyJSON/example/generate.cc
+example/CMakeFiles/generate.dir/generate.cpp.o: example/CMakeFiles/generate.dir/flags.make
+example/CMakeFiles/generate.dir/generate.cpp.o: ../example/generate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lin/TinyJSON/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object example/CMakeFiles/generate.dir/generate.cpp.o"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/generate.dir/generate.cpp.o -c /home/lin/TinyJSON/example/generate.cpp
 
-example/CMakeFiles/generate.dir/generate.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/generate.dir/generate.cc.i"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/generate.cc > CMakeFiles/generate.dir/generate.cc.i
+example/CMakeFiles/generate.dir/generate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/generate.dir/generate.cpp.i"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lin/TinyJSON/example/generate.cpp > CMakeFiles/generate.dir/generate.cpp.i
 
-example/CMakeFiles/generate.dir/generate.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/generate.dir/generate.cc.s"
-	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/generate.cc -o CMakeFiles/generate.dir/generate.cc.s
+example/CMakeFiles/generate.dir/generate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/generate.dir/generate.cpp.s"
+	cd /home/lin/TinyJSON/cmake-build-debug-wsl/example && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lin/TinyJSON/example/generate.cpp -o CMakeFiles/generate.dir/generate.cpp.s
 
 # Object files for target generate
 generate_OBJECTS = \
-"CMakeFiles/generate.dir/generate.cc.o"
+"CMakeFiles/generate.dir/generate.cpp.o"
 
 # External object files for target generate
 generate_EXTERNAL_OBJECTS =
 
-bin/generate: example/CMakeFiles/generate.dir/generate.cc.o
+bin/generate: example/CMakeFiles/generate.dir/generate.cpp.o
 bin/generate: example/CMakeFiles/generate.dir/build.make
 bin/generate: lib/libTinyJSON.a
 bin/generate: example/CMakeFiles/generate.dir/link.txt
