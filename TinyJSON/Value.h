@@ -233,7 +233,7 @@ std::ostream& operator<<(std::ostream& os, const Value& v) {
         if constexpr (std::convertible_to<T, std::variant<bool, int32_t, int64_t, double>>) {
             os << data;
         } else if constexpr (std::is_same_v<T, StringPtr>) {
-            os << *data;
+            os << "\"" << *data << "\"";
         } else {
             assert(false && "unsupported type");
         }
