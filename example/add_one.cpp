@@ -1,9 +1,11 @@
 #include "sample.h"
 
-#include "Writer.h"
-#include "Reader.h"
-#include "ReadStream.h"
-#include "WriteStream.h"
+#include "TinyJSON/Writer.h"
+#include "TinyJSON/Reader.h"
+#include "TinyJSON/ReadStream.h"
+#include "TinyJSON/WriteStream.h"
+
+#include <iostream>
 
 using namespace json;
 
@@ -46,6 +48,6 @@ int main() {
     AddOne addOne(writer);
 
     if (ParseError err = Reader::parse(is, addOne); err != PARSE_OK) {
-        printf("%s\n", parseErrorStr(err));
+        std::cout << parseErrorStr(err) << std::endl;
     }
 }

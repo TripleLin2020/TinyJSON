@@ -1,8 +1,8 @@
+#include "TinyJSON/Writer.h"
+#include "TinyJSON/WriteStream.h"
+
 #include <cstdio>
 #include <string_view>
-
-#include "Writer.h"
-#include "WriteStream.h"
 
 using namespace json;
 using namespace std::string_view_literals;
@@ -11,8 +11,6 @@ int main()
 {
     FileWriteStream os(stdout);
     Writer writer(os);
-
-    printf("%d\n", INFINITY == INFINITY);
 
     writer.StartArray();
     writer.Double(INFINITY);
