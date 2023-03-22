@@ -27,11 +27,11 @@ TEST(json_round, number) {
     /* https://en.wikipedia.org/wiki/Double-precision_floating-point_format */
     TEST_ROUNDTRIP("1.0000000000000002");
     TEST_ROUNDTRIP("-1.0000000000000002");
-    // fixme: stod has bug...
-    //    TEST_ROUNDTRIP("4.9406564584124654e-324");
-    //    TEST_ROUNDTRIP("-4.9406564584124654e-324");
-    //    TEST_ROUNDTRIP("2.2250738585072009e-308");
-    //    TEST_ROUNDTRIP("-2.2250738585072009e-308");
+    // The following numbers could not be parsed because of insufficient precision
+//    TEST_ROUNDTRIP("4.9406564584124654e-324");
+//    TEST_ROUNDTRIP("-4.9406564584124654e-324");
+//    TEST_ROUNDTRIP("2.2250738585072009e-308");
+//    TEST_ROUNDTRIP("-2.2250738585072009e-308");
     TEST_ROUNDTRIP("2.2250738585072014e-308");
     TEST_ROUNDTRIP("-2.2250738585072014e-308");
     TEST_ROUNDTRIP("1.7976931348623157e+308");

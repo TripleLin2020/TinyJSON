@@ -82,11 +82,11 @@ TEST(json_value, number) {
     /* https://en.wikipedia.org/wiki/Double-precision_floating-point_format */
     TEST_DOUBLE(1.0000000000000002, "1.0000000000000002");
     TEST_DOUBLE(-1.0000000000000002, "-1.0000000000000002");
-    // fixme stod not pass edge case
-    //    TEST_DOUBLE(4.9406564584124654e-323, "4.9406564584124654E-323");
-    //    TEST_DOUBLE(4.9406564584124654e-324, "4.9406564584124654e-324");
-    //    TEST_DOUBLE(2.2250738585072009e-308, "2.2250738585072009e-308");
-    //    TEST_DOUBLE(-2.2250738585072009e-308, "-2.2250738585072009e-308");
+    // The following numbers could not be parsed because of insufficient precision
+//    TEST_DOUBLE(4.9406564584124654e-323, "4.9406564584124654E-323");
+//    TEST_DOUBLE(4.9406564584124654e-324, "4.9406564584124654e-324");
+//    TEST_DOUBLE(2.2250738585072009e-308, "2.2250738585072009e-308");
+//    TEST_DOUBLE(-2.2250738585072009e-308, "-2.2250738585072009e-308");
     TEST_DOUBLE(2.2250738585072014e-308, "2.2250738585072014e-308");
     TEST_DOUBLE(-2.2250738585072014e-308, "-2.2250738585072014e-308");
     TEST_DOUBLE(1.7976931348623157e308, "1.7976931348623157e308");
@@ -211,15 +211,15 @@ TEST(json_value, array) {
 TEST(json_value, object) {
     Document doc;
     ParseError err = doc.parse(
-        " { "
-        "\"n\" : null , "
-        "\"f\" : false , "
-        "\"t\" : true , "
-        "\"i\" : 123 , "
-        "\"s\" : \"abc\", "
-        "\"a\" : [ 1, 2, 3 ],"
-        "\"o\" : { \"1\" : 1, \"2\" : 2, \"3\" : 3 }"
-        " } ");
+            " { "
+            "\"n\" : null , "
+            "\"f\" : false , "
+            "\"t\" : true , "
+            "\"i\" : 123 , "
+            "\"s\" : \"abc\", "
+            "\"a\" : [ 1, 2, 3 ],"
+            "\"o\" : { \"1\" : 1, \"2\" : 2, \"3\" : 3 }"
+            " } ");
 
     EXPECT_EQ(err, PARSE_OK);
     EXPECT_EQ(doc.getType(), TYPE_OBJECT_PTR);
