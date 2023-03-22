@@ -166,11 +166,14 @@ private:
         if (start == end) throw Exception(PARSE_BAD_VALUE);
 
         if (expectType == TYPE_DOUBLE) {
-            double d;
-            if (auto res = std::from_chars(&*start, &*end, d); res.ec != std::errc()) {
+            long double d;
+            if (auto res = std::from_chars(&*start, &*end, d);
+                    res.ec != std::errc()
+                    || d > std::numeric_limits<double>::max()
+                    || d < -std::numeric_limits<double>::max()) {
                 throw Exception(PARSE_NUMBER_TOO_BIG);
             }
-            CALL(handler.Double(d));
+            CALL(handler.Double(static_cast<double>(d)));
         } else {
             int64_t i64;
             if (auto res = std::from_chars(&*start, &*end, i64); res.ec != std::errc()) {
